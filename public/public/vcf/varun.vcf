@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Varun Lau
+N:Lau;Varun;;;
+item1.EMAIL;TYPE=INTERNET:varun@mudrahome.com
+item1.X-ABLabel:
+item2.TEL:81303 88050
+item2.X-ABLabel:
+item3.ORG:Mudrahome
+item3.X-ABLabel:
+item4.TITLE:IT Team lead
+item4.X-ABLabel:
+CATEGORIES:myContacts
+END:VCARD

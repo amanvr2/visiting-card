@@ -1,0 +1,469 @@
+#logo{
+    height: 51px;
+    width: 200px;
+}
+
+/* .navbar-brand{
+    padding: 0px;
+    float: left;
+} */
+
+.navbar-default{
+    margin: 0;
+}
+
+.banner{
+    background-image: url(./images/giphys.gif);
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#log{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-bottom: -100px;
+    box-shadow: 0 0 4px 1px#246E99;
+}
+
+.info{
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.info-list{
+    display: flex;
+    flex-flow: column;
+    width: 60%;
+    text-align: center;
+}
+
+.social-media{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
+
+.social-item>a>img{
+    height: 40px;
+    width: 40px;
+}
+
+.call{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+}
+
+i{
+    margin-right: 10px;
+}
+
+.address{
+    height: 400px;
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.add-list{
+
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 50px;
+    width: 80%;
+}
+
+.add-item{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-content>p{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.share{
+    width: 100%;
+    height: 400px;
+    padding-top: 20px;
+}
+
+.share>h1{
+    text-align: center;
+}
+
+.share-list{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 50px;
+    width: 100%;
+}
+
+.share-item{
+    width: 30%;
+    margin: 30px;
+    text-align: center;
+}
+
+
+.main{
+    height: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./../images/pr1.png); 
+    background-size: cover;
+}
+
+
+.form{
+
+   
+    border: 1.5px solid whitesmoke;
+    border-radius: 1rem;
+    padding: 30px;
+    text-align: center;
+    background-color: white;
+    
+    
+}
+
+.login {
+    display: none;
+  
+}
+
+.register{
+    display: flex;
+    
+  }
+
+
+.form>h3{
+    margin-bottom: 50px;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+#logbtn{
+    
+    margin-top: 30px;
+}
+
+.projects{
+height: auto;}
+
+.contact-section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.contact-list{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    padding: 50px;
+    background-color: #F2F2F2;
+}
+
+.contact-content{
+    width: 25%;
+    padding: 50px; 
+    
+
+}
+
+
+.contact-form{
+    width: 65%;
+    margin-left: 40px;
+   
+}
+
+
+.contact-form>.container{
+    background-color: #FAFAFA;
+
+}
+
+Style inputs, select elements and textareas
+input[type=text], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+ 
+
+  #fname{
+    width: 600px;
+    height: 40px;
+
+  }
+  
+  /* Style the label to display next to the inputs */
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  /* Style the submit button */
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  /* Style the container */
+  .contact-form>.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  /* Floating column for labels: 25% width */
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+    @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+@media (min-width: 1200px){
+.container {
+    width: 800px;
+}
+}
+
+.vl {
+    border-left: 4px solid #2E2751;
+    height: 400px;
+  }
+
+  .contact-form>.container>form>.btn-row{
+      display: flex;
+      justify-content: center;
+      
+  }
+
+
+  .contact-form>.container>form>.btn-row>button{
+      background-color: #2E2751;
+      color: white;
+      font-size: 17px;
+      border-radius: 0.5rem;
+      width: 200px;
+      margin-right: 100px;
+  }
+
+
+.service,.projects{
+
+width: 100%;
+height: auto;
+display: flex;
+justify-content: center;
+flex-flow: column;
+align-items: center;
+margin-top: 50px;
+
+      
+
+}
+
+.service-head,.project-head{
+border-bottom: 2px solid lightgray;
+width: 70%;
+}
+
+.service-head>h1,.project-head>h1{
+
+  font-weight: 600;
+  
+}
+.service-list{
+
+  display: flex;
+  flex-flow: column;
+  width: 70%;
+  padding-left: 30px;
+  background-color: white;
+  box-shadow: 0 0 4px 1px;
+  border-radius: 0.5rem;
+}
+
+
+
+.project-item{
+  margin-bottom: 23px;
+  margin-top: 20px;
+}
+.project-list{
+
+  display: flex;
+  flex-flow: column;
+  width: 70%;
+  padding-left: 30px;
+  background-color: white;
+  box-shadow: 0 0 4px 1px;
+  border-radius: 0.5rem;
+  padding-left: 30px;
+  height: auto;
+  padding-bottom: 20px;
+
+}
+
+.projectItem-list{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 100%;
+  
+}
+
+.project-image{
+  width: 30%;
+}
+
+.project-image>img{
+  width: 300px;
+  height: 200px;
+}
+
+.project-content{
+  width: 65%;
+}
+
+.project-content>h2{
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px){
+
+    #fname{
+            width: 300px;
+            height: 30px;
+
+        }
+
+
+    .address{
+        height: auto;
+        width: 100%;
+    }
+
+    .add-list{
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .add-item{
+        width: 100%;
+        margin-bottom: 55px;
+    }
+
+    .info-head>h1{
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .info-list{
+        width: 70%;
+    }
+
+    .add-content>p{
+        font-size: 18px;
+    }
+
+    .share-list{
+        padding: 10px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
