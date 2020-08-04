@@ -42,13 +42,15 @@
 
     Instagram Link : <input type="text" name="instaLink" class="form-control">
 
-    Youtube Link : <input type="text" name="youtubeLink" class="form-control">
+    linkedin Link : <input type="text" name="linkedinLink" class="form-control">
 
-    Google Map Link : <input type="text" name="gmapLink" class="form-control">
+    About Us : <input type="text" name="aboutUs" class="form-control">
+
+    About Us Description : <input type="text" name="aboutusDesc" class="form-control">
 
     Image  : <input name="image1" type="file" >
 
-    VCF  : <input name="vcf" type="file" >
+    VCF  : <input name="vcf" type="file" > 
 
     <br>
 

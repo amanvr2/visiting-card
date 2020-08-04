@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactMail;
+use App\Mail\LinkMail;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
@@ -42,8 +43,10 @@ class DashboardController extends Controller
         $fbLink = $req->input('fbLink');
         $twitterLink = $req->input('twitterLink');
         $instaLink = $req->input('instaLink');
-        $youtubeLink = $req->input('youtubeLink');
-        $gmapLink = $req->input('gmapLink');
+        $linkedinLink = $req->input('linkedinLink');
+        $aboutUs = $req->input('aboutUs');
+        $aboutusDesc = $req->input('aboutusDesc');
+       
 
         $user_id = auth()->user()->id;
 
@@ -64,12 +67,13 @@ class DashboardController extends Controller
 
           $idCount++;
         }
+ 
 
         if($idCount == 0){
 
         $link = "/card/" . $user_id;
 
-        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'youtubeLink' => $youtubeLink, 'gmapLink' => $gmapLink, 'image1' => $originalFile1, 'vcf' => $originalFile2, 'link' => $link, 'user_id' => $user_id);
+        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'aboutUs' => $aboutUs,'aboutusDesc' => $aboutusDesc, 'image1' => $originalFile1, 'vcf' => $originalFile2, 'link' => $link, 'user_id' => $user_id);
 
         DB::table('data')->insert($data);
 
