@@ -654,7 +654,9 @@ color: white;
 background-color: wheat;
 border:none;
 }
-
+.navbar-default{
+  height: auto;
+}
 .navbar-default .navbar-nav>li>a{
   margin: 0px;
 }
@@ -717,7 +719,21 @@ border:none;
 .panels>.container{
   width: 90%;
 }
+.sign-upImage{
+  display: none;
+}
 
+.register,.login{
+  width: 90%;
+}
+.form{
+  margin: 0px;
+}
+.main{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
 
 }
 
