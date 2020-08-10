@@ -42,17 +42,17 @@
 
         @csrf
 
-        Business Name : <input type="text" name="businessname" class="form-control">
+        Business Name : <input type="text" name="businessname" class="form-control" required>
 
-        Business Tagline : <input type="text" name="tagline" class="form-control">
+        Business Tagline : <input type="text" name="tagline" class="form-control" required>
 
-        Name : <input type="text" name="name" class="form-control">
+        Name : <input type="text" name="name" class="form-control" required>
 
-        Number : <input type="text" name="number" class="form-control">
+        Number : <input type="text" name="number" class="form-control" required>
 
-        Email : <input type="text" name="email" class="form-control">
+        Email : <input type="text" name="email" class="form-control" required>
 
-        Address : <input type="text" name="address" class="form-control">
+        Address : <input type="text" name="address" class="form-control" required>
 
         Facebook Link : <input type="text" name="fbLink" class="form-control">
 
@@ -62,13 +62,13 @@
 
         linkedin Link : <input type="text" name="linkedinLink" class="form-control">
 
-        About Us : <input type="text" name="aboutUs" class="form-control">
+        About Us : <input type="text" name="aboutUs" class="form-control" required>
 
-        About Us Description : <input type="text" name="aboutusDesc" class="form-control">
+        About Us Description : <input type="text" name="aboutusDesc" class="form-control" required>
 
-        Image  : <input name="image1" type="file" >
+        Image  : <input name="image1" type="file" required >
 
-        VCF  : <input name="vcf" type="file" > 
+        VCF  : <input name="vcf" type="file" required > 
 
         <br>
 
@@ -94,9 +94,9 @@
 
     @csrf
 
-    Title : <input type="text" name="title" class="form-control">
+    Title : <input type="text" name="title" class="form-control" required>
 
-    Body : <textarea name="body" class="form-control"></textarea>
+    Body : <textarea name="body" class="form-control" required></textarea>
 
 
     <br>
@@ -123,11 +123,11 @@
 
     @csrf
 
-    Title : <input type="text" name="title" class="form-control">
+    Title : <input type="text" name="title" class="form-control" required>
 
-    Body : <textarea name="body" class="form-control"></textarea><br>
+    Body : <textarea name="body" class="form-control" required></textarea><br>
 
-    Image  : <input name="image" type="file" >
+    Image  : <input name="image" type="file" required>
 
 
     

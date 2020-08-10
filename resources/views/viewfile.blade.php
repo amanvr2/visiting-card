@@ -27,26 +27,43 @@
 
       <div class="social-media">
 
+          @if($user->fbLink != NULL)
+
           <div class="social-item">
               <a href="{{ $user->fbLink }}"><img src="/images/facebook.png"></a>
 
           </div>
+
+          @endif
+          
+         
+
+          @if($user->twitterLink != NULL)
 
           <div class="social-item">
               <a href="{{ $user->twitterLink }}"><img src="/images/twitter.png"></a>
 
           </div>
 
+          @endif
+
+          @if($user->instaLink != NULL)
+
           <div class="social-item">
 
               <a href="{{ $user->instaLink }}"><img src="/images/instagram.png"></a>
 
           </div>
+          @endif
+
+          @if($user->linkedinLink != NULL)
 
           <div class="social-item">
               <a href="{{ $user->linkedinLink }}"><img src="/images/linkedin.png"></a>
 
           </div>
+
+          @endif
 
           <div class="social-item">
               <a href="https://api.whatsapp.com/send?phone={{ $user->number }}"><img src="/images/whatsapp.png"></a>
