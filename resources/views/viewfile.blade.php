@@ -277,7 +277,7 @@
 					<form action="/mail-sent/{{$user->email}}" method="POST">
 
              {{ csrf_field() }}
-					  <div class="row">
+					  <div class="col">
 						<div class="col-25">
 						  <label for="fname">Full Name</label>
 						</div>
@@ -285,7 +285,7 @@
 						  <input type="text" id="fname" name="name" placeholder="    Your name.." required>
 						</div>
 					  </div>
-					  <div class="row">
+					  <div class="col">
 						<div class="col-25">
 						  <label for="lname">Email Address</label>
 						</div>
@@ -294,7 +294,7 @@
 						</div>
 					  </div>
 
-					  <div class="row">
+					  <div class="col">
 						<div class="col-25">
 						  <label for="lname">Phone Number</label>
 						</div>
@@ -303,7 +303,7 @@
 						</div>
 					  </div>
 
-					  <div class="row">
+					  <div class="col">
 						<div class="col-25">
 						  <label for="subject">Message</label>
 						</div>
@@ -313,7 +313,7 @@
 					  </div>
 
 					  <br>
-					  <div class="btn-row">
+					  <div class="btn-row col">
 						<button type="submit" id="s"type="submit" class="btn btn-lg">Submit</button>
 					  </div>
 					</form>
@@ -332,56 +332,6 @@
 
 
 @foreach($stud as $user)
-
-<!-- <div class="share">
-
-    <h1>Share Your Card </h1>
-
-    <div class="share-list">
-
-        <div class="share-item">
-
-            <a href="https://api.whatsapp.com/send?text=This%20is%20my%20digital%20Visiting%20card:%20{{ $user->link }}" role="button" class="btn btn-success">Whatsapp </a>
-
-        </div>
-
-        <div class="share-item">
-
-            <a href="mailto:?body=This is my digital visting card: {{ $user->link }}" role="button" class="btn btn-danger">Mail </a>
-
-        </div>
-
-        <div class="share-item">
-
-            <a href="https://www.facebook.com/sharer.php?u={{$user->link}}" role="button" class="btn btn-primary">Facebook</a>
-
-        </div>
-
-        <div class="share-item">
-
-            <a href="https://twitter.com/intent/tweet?text=VCard&url={{$user->link}}" role="button" class="btn btn-info">Twitter </a>
-
-        </div>
-
-        <div class="share-item">
-
-            <a href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%3Fmini%3Dtrue%26url%3D{{$user->link}}" role="button" class="btn btn-info">Linkedin </a>
-
-        </div>
-
-        <div class="share-item">
-
-            <a href="sms:?body=This is my digital visting card: {{ $user->link }}!" role="button" class="btn btn-warning">SMS </a>
-
-        </div>
-
-
-    </div>
-
-
-
-</div> -->
-
 
 <!-- 
 //////////////////////////////////////        Share card     //////////////////////////////////////////// -->

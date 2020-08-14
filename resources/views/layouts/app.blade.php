@@ -15,7 +15,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>V-Card</title>
+    <title>My Credential</title>
 
 
 
@@ -24,8 +24,8 @@
 
 
 
-            @include('includes.navbar')
-            @yield('content')
+  @include('includes.navbar')
+  @yield('content')        
 
 
 

@@ -402,11 +402,11 @@ input[type=text], select, textarea{
     height: 400px;
   }
 
-  .contact-form>.container>form>.btn-row{
+  /* .contact-form>.container>form>.btn-row{
       display: flex;
       justify-content: center;
       
-  }
+  } */
 
 
   .contact-form>.container>form>.btn-row>button{
@@ -414,8 +414,8 @@ input[type=text], select, textarea{
       color: white;
       font-size: 17px;
       border-radius: 0.5rem;
-      width: 200px;
-      margin-right: 100px;
+      width: 150px;
+      margin-top: 1rem;
   }
 
 
@@ -590,6 +590,180 @@ color: white;
 .panel-title{
   font-size: 24px;
 }
+
+
+/* ////////////////////////  Home Page css  ////////////////////////// */
+
+
+.home-banner{
+
+  background-image: url(./images/home1.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 800px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-head{
+  width: 50%;
+  padding-left: 100px;
+}
+
+.home-head>h1{
+
+  color: white;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 7rem;
+  padding-bottom: 30px;
+}
+
+.home-head>p{
+
+  color: white;
+  font-size: 24px;
+  padding-bottom: 30px;
+}
+
+
+.home-head>a{
+
+  font-size: 25px;
+  /* border-radius: 4rem; */
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #286090;
+  border: 1px solid white;
+}
+
+
+.howitWorks{
+  background-color: white;
+  height: 600px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.howitWorks-head{
+  padding-top: 30px;
+  text-align: center;
+}
+.howitWorks-head>h2{
+  font-size: 36px;
+  font-weight: 700;
+  padding-bottom: 15px;
+}
+
+.howitWorks-head>p{
+  font-size: 18px;
+  
+}
+
+.howitWorks-list{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 70%;
+  padding:50px;
+}
+
+.howitWorks-item{
+  width: 27%;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.howitWorks-item>img{
+  height: 150px;
+  width: 160px;
+  box-shadow: 0 0 4px 1px lightgray;
+  margin-bottom: 20px;
+}
+
+.howitWorks-item>h4{
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 768px){
 
