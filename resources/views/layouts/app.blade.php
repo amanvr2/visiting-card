@@ -25,7 +25,8 @@
 
 
   @include('includes.navbar')
-  @yield('content')        
+  @yield('content')     
+  @include('includes.footer')   
 
 
 

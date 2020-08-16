@@ -1,7 +1,7 @@
-<div class="footer">
+<div class="footer"> 
 
 
-    <div class="app-list">
+    <!-- <div class="app-list">
 
 
         <div class="app-item">
@@ -20,14 +20,12 @@
 
         </div>
 
-    </div>
+    </div> -->
 
     <div class="footer-list">
 
-
-
-
-        <a href="/terms-and-conditions">Privacy And Policy</a> 
+      <p> Mudrainfotech </p>
+      <p> Copyright © 2020 All right reserved </p>
 
     <div>
 

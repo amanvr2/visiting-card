@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">V-Card</a>
+                    <a class="navbar-brand" href="/"><img src="/images/logos2.png"></a>
                 </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -18,7 +18,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::guest())
-                        <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="{{ route('register') }}" id="signupBtn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 
                     @else
 

@@ -12,26 +12,37 @@
   margin: 0;
   background-color: #293745;
   border: none;
-  height: 60px; 
+  height: 85px; 
   
 
 }
 
 .navbar-default .navbar-nav>li>a{
   color: white;
-  margin-top: 5px;
+  margin-top: 17px;
 }
 
 .navbar-default .navbar-nav>li>a:hover{
 color: white;
 }
 
-.navbar-default .navbar-brand{
-
-  color: white;
-  margin-top: 5px;
+.navbar-brand>img{
+  height: 75px;
+  width: 280px;
 }
 
+.navbar-brand{
+  padding: 0px;
+}
+
+#signupBtn{
+
+  font-size: 20px;
+  border-radius: 2rem;
+  background-color: white;
+  color: #293745;
+  font-weight: 700;
+}
 .navbar-default .navbar-brand>a{
   vertical-align: middle;
 }
@@ -694,14 +705,74 @@ color: white;
   font-weight: 600;
 }
 
+.features{
+  background-color: #F2F2F2;
+  height: 500px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.features-head{
+  padding-bottom: 40px;
+  padding-top: 30px;
+}
+
+.features-head>h2{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.feature-item>p{
+  font-size: 18px;
+  text-align: justify;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.feature-item>p>i{
+  color: #3B317D;
+  font-weight: 600;
+}
+
+.feature-list{
+  width: 70%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-evenly;
+ 
+
+}
 
 
+.feature-item{
+  width: 45%;
+}
 
+.feature-img{
+  width: 45%;
+}
 
+.feature-img>img{
 
+  height: 325px;
+  width: 355px;
+}
 
+.footer{
+  height: 100px;
+  background-color: black;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column;
+  align-items: center;
+}
 
-
+.footer-list{
+  text-align: center;
+  color: lightgray;
+}
 
 
 
@@ -907,6 +978,84 @@ border:none;
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+
+
+/* ///////////////////////////// home page ////////////////////////////////////////// */
+
+.navbar-brand>img{
+  height: 50px;
+  width: 195px;
+}
+
+
+.home-banner{
+
+  height: 700px;
+  display: flex;
+  justify-content: center;
+}
+
+.home-head{
+  width: 90%;
+  padding: 20px;
+}
+
+.home-head>h1{
+  font-size: 29px;
+  line-height: 4rem;
+}
+
+.home-head>p{
+  font-size: 19px;
+}
+
+.howitWorks-head{
+  padding: 30px;
+}
+
+
+.howitWorks{
+  height: auto;
+}
+
+.howitWorks-list{
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+  align-items: center;
+  width: 90%;
+}
+
+.howitWorks-item{
+  width: 80%;
+}
+
+.features{
+  height: auto;
+}
+
+.feature-list{
+  display: flex;
+  flex-flow: column;
+  width: 90%;
+  align-items: center;
+}
+.feature-img{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.feature-img>img{
+  height: 266px;
+  width: 300px;
+}
+
+.feature-item{
+  width: 80%;
+  margin-top: 30px;
+  padding-bottom: 30px;
 }
 
 }

@@ -60,7 +60,37 @@
 
 
 </div>
+ 
 
+<div class="features">
+  <div class="features-head">
+
+    <h2> Features </h2>
+  </div>
+
+  <div class="feature-list">
+
+    <div class="feature-img">
+
+      <img src="/images/features.png">
+
+    </div>
+    <div class="feature-item">
+
+   
+      <p> <i class="fa fa-check-square-o" aria-hidden="true"></i>Easy to create within minutes </p>
+      <p> <i class="fa fa-check-square-o" aria-hidden="true"></i>Upload profile photo, display social networking icons and embed a Google map </p>
+      <p> <i class="fa fa-check-square-o" aria-hidden="true"></i>Share the visiting card anytime & anywhere </p>
+      <p> <i class="fa fa-check-square-o" aria-hidden="true"></i>No hassle of printing visiting cards again and again </p>
+  
+    </div>
+
+
+  </div>
+
+
+
+</div>
 
 
 
