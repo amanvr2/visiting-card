@@ -1,14 +1,14 @@
 BEGIN:VCARD
 VERSION:3.0
-FN:Aman verma
+FN:Varun Lau
 N:verma;Aman;;;
-item1.EMAIL;TYPE=INTERNET:test@gmail.com
+item1.EMAIL;TYPE=INTERNET:varun@mudrahome.com
 item1.X-ABLabel:
-item2.TEL:97174 11536
+item2.TEL:8130388050
 item2.X-ABLabel:
 item3.ORG:mudrainfo
 item3.X-ABLabel:
-item4.TITLE:developer
+item4.TITLE:
 item4.X-ABLabel:
 CATEGORIES:Imported on 6/23,myContacts
 END:VCARD

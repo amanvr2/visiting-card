@@ -8,6 +8,9 @@
 
   <div class="banner">
 
+
+    <img src="{{ asset('/public/Cover-img/' . $user->image2) }}" id="cover"> 
+
     <img src="{{ asset('/public/img/' . $user->image1) }}" id="log">
 
   </div>
@@ -66,7 +69,7 @@
           @endif
 
           <div class="social-item">
-              <a href="https://api.whatsapp.com/send?phone={{ $user->number }}"><img src="/images/whatsapp.png"></a>
+            <a href="https://api.whatsapp.com/send?phone={{ $user->number }}"><img src="/images/whatsapp.png"></a>
 
           </div>
 
@@ -111,7 +114,7 @@
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body">
+        <div class="panel-body"> 
           <div class="about-brief">
 
             <h2> {{ $user->aboutUs}} </h2>
@@ -119,13 +122,8 @@
 
           </div>
 
-
-          <div class="aboutUsDesc">
-
-            <p>  {{ $user->aboutusDesc}} </p>
-
-          </div>
-
+          
+    
 
         </div>
       </div>
@@ -167,17 +165,27 @@
             <div class="project-item">
 
                 <div class="projectItem-list">
-
+  
                     <div class="project-image">
-                        <img src="{{ asset('/public/project-images/' . $user->image) }}" >
+                      <img src="{{ asset('/public/project-images/' . $user->image) }}" >
+                      @if($user->image1 != NULL)
+                      <img src="{{ asset('/public/project-images/' . $user->image1) }}" >
+                      @endif
+                    
+                     
                     </div>
 
                     <div class="project-content">
 
                         <h2> {{ $user->title }} </h2>
-                        <p> {{ $user->body }} </p>
+                        <p> {{ $user->body }} </p><br>
+                        @foreach($stud as $user)
 
-                    </div>
+                          <a href="https://api.whatsapp.com/send?phone={{ $user->number }}" role="button" class="btn btn-primary">Enquiry</a>
+                        @endforeach
+                    </div> 
+
+                    
                 </div>
 
             </div>
@@ -229,7 +237,7 @@
 
                 <p> <i class="fa fa-envelope" aria-hidden="true"></i>Email : {{ $user->email }} </p>
                 <p> <i class="fa fa-phone-square" aria-hidden="true"></i>Mobile : {{ $user->number }} </p>
-                <p> <i class="fa fa-address-book" aria-hidden="true"></i>Address : {{ $user->address }} </p>
+                <p> <i class="fa fa-address-book" aria-hidden="true"></i>Address : {{ $user->address . ' , '. $user->pincode }} </p>
 
             </div>
 
@@ -277,7 +285,7 @@
 					<form action="/mail-sent/{{$user->email}}" method="POST">
 
              {{ csrf_field() }}
-					  <div class="col">
+					  <div class="row">
 						<div class="col-25">
 						  <label for="fname">Full Name</label>
 						</div>
@@ -285,7 +293,7 @@
 						  <input type="text" id="fname" name="name" placeholder="    Your name.." required>
 						</div>
 					  </div>
-					  <div class="col">
+					  <div class="row">
 						<div class="col-25">
 						  <label for="lname">Email Address</label>
 						</div>
@@ -294,7 +302,7 @@
 						</div>
 					  </div>
 
-					  <div class="col">
+					  <div class="row">
 						<div class="col-25">
 						  <label for="lname">Phone Number</label>
 						</div>
@@ -303,7 +311,7 @@
 						</div>
 					  </div>
 
-					  <div class="col">
+					  <div class="row">
 						<div class="col-25">
 						  <label for="subject">Message</label>
 						</div>
@@ -313,7 +321,7 @@
 					  </div>
 
 					  <br>
-					  <div class="btn-row col">
+					  <div class="btn-row">
 						<button type="submit" id="s"type="submit" class="btn btn-lg">Submit</button>
 					  </div>
 					</form>
@@ -344,7 +352,7 @@
 
         <div class="share-item">
 
-            <a href="https://api.whatsapp.com/send?text=This%20is%20my%20digital%20Visiting%20card:%20{{ $user->link }}" role="button" class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i>Whatsapp </a>
+            <a href="https://api.whatsapp.com/send?text=This%20is%20{{ $user->name }}'s%20digital%20Visiting%20card:%20{{ $user->link }}" role="button" class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i>Whatsapp </a>
 
         </div>
 
