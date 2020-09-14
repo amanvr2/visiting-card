@@ -16,7 +16,7 @@
   </div>
 
 
-</div>
+</div> 
 
 <div class="howitWorks">
   <div class="howitWorks-head">
@@ -28,7 +28,7 @@
   <div class="howitWorks-list">
 
     <div class="howitWorks-item">
-      <img src="/images/sign.jpg" alt="signup">
+      <img src="/images/share1.png" alt="signup">
 
       <h4> Sign Up </h4>
       <p> Create your free account </p>
@@ -38,14 +38,14 @@
 
     <div class="howitWorks-item">
 
-      <img src="/images/form.jpg" alt="signup">
+      <img src="/images/share2.png" alt="signup">
 
       <h4> Create Your Card </h4>
       <p> Add basic, services and project details </p>
     </div>
 
     <div class="howitWorks-item">
-      <img src="/images/share.jpg" alt="signup">
+      <img src="/images/share3.png" alt="signup">
 
       <h4> Share Your Card </h4>
       <p> Share your digital business card with anyone</p>

@@ -10,9 +10,9 @@ class PaymentController extends Controller
   public function freeTrial(){
 
     $id = auth()->user()->id;
-    $data = array('planType' => 'free', 'user_id' => $id, 'success' => '1');
+    $data = array('planType' => 'free', 'user_id' => $id);
 
-    DB::table('payments')->insert($data);
+    DB::table('freetrial')->insert($data);
 
     return redirect('/add'); 
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use DB;
 use Mapper;
 use Illuminate\Http\Request;
@@ -25,27 +25,64 @@ class ViewController extends Controller
           $pincode = $test->pincode; 
 
           $full = $add.$pincode;
+          Mapper::location($full)->map(['zoom' => 15, 'marker' => true, 'type' => 'NORMAL']);
         }
-        Mapper::location($full)->map(['zoom' => 15, 'marker' => true, 'type' => 'NORMAL']);
+        
 
-        $date = DB::select('select * from payments where user_id = ?', [$id]);
-        foreach($date as $vali){
+        $freeData = DB::select('select * from freetrial where user_id = ?', [$id]);
+        $freecount = count($freeData);
+        $paidData = DB::select('select * from paid where user_id = ?', [$id]);
+        $paidcount = count($paidData);
+
+        if($paidcount == 1){
+          foreach($paidData as $vali){
 
           $regdate = $vali->dateTime;
           $regsdate = strtotime($regdate);
-      
-          $d2 = ceil(( time() - $regsdate )/60/60/24);
-          // echo "There are " . $d2 ." days left"; 
+          // $testdate=strtotime("2021-09-16 13:21:17");
+          $days = ceil(( time() - $regsdate )/60/60/24);
+          // echo "Days over - " . $d2 ; 
+
+          }
+          if($days <= 365)
+          {
+            return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData);
+          }
+
+          else{echo"account expired";}
+
+          // echo "paid ";
+
 
         }
 
-        if($d2 <= 15)
-        {
-          return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData);
+
+        elseif($freecount == 1){
+
+          foreach($freeData as $vali){
+
+            $regdate = $vali->dateTime;
+            $regsdate = strtotime($regdate);
+        
+            $daysLeft = ceil(( time() - $regsdate )/60/60/24);
+            // echo "diff is " . $d2 ; 
+           
+          }
+          if($daysLeft <= 15)
+            {
+              return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData);
+            }
+
+          else{echo"account expired";}
+
+          // echo "free";
         }
 
-        else{echo"account expired";}
-    }
+          
+        else{echo "Not registered";}
+
+
+    }   
 
         
     public function contact_mail(Request $req, $email)

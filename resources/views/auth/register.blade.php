@@ -8,7 +8,7 @@
 
     <div class="sign-upImage">
 
-      <img src="/images/man-signup.png">
+      <img src="/images/new-signup.png">
 
     </div>
 

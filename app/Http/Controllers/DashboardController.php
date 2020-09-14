@@ -29,7 +29,7 @@ class DashboardController extends Controller
      */
     public function index()
     { 
-      $data = DB::select('select * from payments where user_id = ?', [auth()->user()->id]);
+      $data = DB::select('select * from freetrial where user_id = ?', [auth()->user()->id]);
       $count = count($data);
       return view('dashboard', ['count' => $count]);
     }

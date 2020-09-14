@@ -16,7 +16,14 @@
 
 <div class="myDetails"> 
   <div class="myDetails-sub">  
-    <div class="myDetails-head"><h1>My Details </h1></div> @if($idCount == 0) <p> No Details Added </p> @else
+    <div class="myDetails-head">
+      <h1>My Details </h1>
+    </div> 
+
+    @if($idCount == 0) 
+      <p> No Details Added </p> 
+    @else
+
     @foreach($data as $user)
 
      
@@ -33,11 +40,13 @@
         <p> <b> Twitter Link :</b> {{ $user->twitterLink }} </p> 
         <p> <b>Instagram Link :</b> {{ $user->instaLink }} </p>
         <p> <b>Linkedin Link :</b> {{ $user->linkedinLink }} </p>
-        <p> <b> About Us :</b> {{ $user->aboutUs }} </p><br>
+        <p> <b> About Us :</b> {{ $user->aboutUs }} </p>
+        <p> <b> My Link :</b> {{ $user->link }} </p><br>
         <a href="/show-basicDetails/{{ $user->id }}" id="editbigbtn" role="button" class="btn btn-primary">Edit</a> 
       </div>
      
-    @endforeach @endif
+    @endforeach
+    @endif
   </div>
 
  
