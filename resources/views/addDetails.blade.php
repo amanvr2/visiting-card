@@ -16,14 +16,27 @@
   </div>
 
 
-
+  @if(Session::has('success'))
+    <p class="alert alert-success">Data has been saved successfully !</p>
+  @elseif(Session::has('email'))
+    <p class="alert alert-danger">Link Sent !</p>  
+  @elseif(Session::has('vcfUploaded'))
+    <p class="alert alert-danger">VCF Uploaded Successfully !</p>
+  @elseif(Session::has('error'))
+    <p class="alert alert-danger">Data Already Present !</p>
+  @endif
 
 
   <div class="form-list">
 
 
     <div class="form-item"> 
+     
+
+        @if($count == 0)
+
       
+
         <div class="basic">
           <p> Step 1 </p>
           <h3> Basic Details </h3>
@@ -31,16 +44,7 @@
           <br> 
 
 
-            @if(Session::has('success'))
-                  <p class="alert alert-success">Data has been saved successfully !</p>
-            @elseif(Session::has('email'))
-                  <p class="alert alert-danger">Link Sent !</p>  
-
-            @elseif(Session::has('error'))
-                  <p class="alert alert-danger">Data Already Present !</p>
-
-
-            @endif
+          
 
           <form action="/save" class="form-group" method="POST" enctype="multipart/form-data">
 
@@ -59,7 +63,8 @@
 
             Full Address * : <input type="text" name="address" class="form-control" required>
             Pincode * : <input type="text" name="pincode" class="form-control" required>
-            Facebook Link : <input type="text" name="fbLink" class="form-control">
+            Website Link : <input type="text" name="website" class="form-control">
+            Facebook Link : <input type="text" name="fbLink" class="form-control"> 
 
             Twitter Link : <input type="text" name="twitterLink" class="form-control">
 
@@ -73,11 +78,11 @@
 
             Cover Image * : <input name="image2" type="file" required >  
 
-            VCF  : <input name="vcf" type="file"  > <a data-toggle="modal" href="#myModal">How to get your VCF ?</a> <br>
+            <!-- VCF  : <input name="vcf" type="file"  > <a data-toggle="modal" href="#myModal">How to get your VCF ?</a> <br>
               <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                 
-                  <!-- Modal content-->
+                  
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -95,7 +100,7 @@
                   </div>
                   
                 </div>
-              </div>
+              </div> -->
 
             <br>
 
@@ -105,7 +110,8 @@
           </form>
 
         </div>
-    
+      @endif
+      
 
 
 
@@ -169,7 +175,12 @@
 
           @if(Session::has('project_success'))
 		        <p class="alert alert-success">Data has been saved successfully </p>
+          @elseif(Session::has('image_error'))
+                  <p class="alert alert-success">large!</p>
+
           @endif
+
+
           <p> Step 3 </p>
           <h3>Add Business Details </h3>
 
@@ -192,8 +203,8 @@
                       <tr>
                         <td><input type="text" name="title[]" class="form-control" required></td>
                         <td><input type="text" name="body[]" class="form-control" required></td>
-                        <td><input type="file" name="image[]"required></td>
-                        <td><input type="file" name="image1[]" required></td> 
+                        <td><input type="file" name="image[]"></td>
+                        <td><input type="file" name="image1[]"></td> 
                         <td><a href="/dashboard#project-form" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>
                       </tr> 
                       
@@ -223,29 +234,38 @@
 
       @endforeach
 
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
     </div>
+    
+    @if($vcfcount == 0)
+    <div class="vcf">
+      <div class="vcf-list">
+        <div class="vcf-item">
 
+          <h4> Few More Steps </h4><br>
+          <p>1. Go to <a href="https://contacts.google.com/" target="_blank">Google Contacts.</a></p>
+          <p>2. Click on Create Contact and fill your details.</p>
+          <p>3. Click on more actions and select Export and then Export as vCard.</p>
+          <p>4. VCF File will be downloaded .</p>
+          <p>5. Upload VCF File .</p>
+          <form action="/vcf-save" method="POST" class="form-group" enctype="multipart/form-data">
+            @csrf
+            <label>VCF: </label>
+            <input name="vcf" type="file" class="form-control"required > <br>
+
+            <button type="submit" name="submit" class="btn btn-success">Upload </button>
+          </form>
+        </div> 
+      </div>
+    </div>
+  </div>
+    @endif
 
 
 
   </div>
+ 
 
-
+ 
 
 </div>
  

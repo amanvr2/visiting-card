@@ -27,8 +27,8 @@ function addRows() {
   var tr = '<tr>' +
     '<td><input type="text" name="title[]" class="form-control" required></td>' +
     '<td><input type="text" name="body[]" class="form-control required"></td>' +
-    '<td><input type="file" name="image[]" class="form-control" required></td>' +
-    '<td><input type="file" name="image1[]" class="form-control" required></td>' +
+    '<td><input type="file" name="image[]" class="form-control" ></td>' +
+    '<td><input type="file" name="image1[]" class="form-control" ></td>' +
     '<td><a href="#project-form" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>' +
     '</tr>';
   $('.project-row').append(tr);

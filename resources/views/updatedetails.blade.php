@@ -25,7 +25,7 @@
       <label>Email : </label><input type="text" name="email" class="form-control" value="{{ $user->email}} " >
 
       <label>Full Address :</label> <input type="text" name="address" class="form-control" value="{{ $user->address}} " >
-
+      <label>Website Link :</label> <input type="text" name="website" class="form-control" value="{{ $user->website}} ">
       <label>Facebook Link :</label> <input type="text" name="fbLink" class="form-control" value="{{ $user->fbLink}} ">
 
       <label>Twitter Link :</label> <input type="text" name="twitterLink" class="form-control" value="{{ $user->twitterLink}} ">
@@ -40,7 +40,7 @@
 
       <label>Cover Image :</label> <input name="image2" type="file" value="{{ $user->image2}} " >  
 
-      <label>VCF  : </label><input name="vcf" type="file" value="{{ $user->vcf}} " > <br>
+      <br>
 
       <button type="submit" name="submit" id="saveBtn"class="btn btn-success"><i id="saveIcon" class="fa fa-floppy-o" aria-hidden="true"></i>Update</button>
 

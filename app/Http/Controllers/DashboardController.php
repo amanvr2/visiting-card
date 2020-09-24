@@ -21,29 +21,43 @@ class DashboardController extends Controller
     { 
         $this->middleware('auth');
     }
-
+ 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index()                                 // view dashboard Page
     { 
-      $data = DB::select('select * from freetrial where user_id = ?', [auth()->user()->id]);
-      $count = count($data);
+      $freedata = DB::select('select * from freetrial where user_id = ?', [auth()->user()->id]);
+      $paiddata = DB::select('select * from paid where user_id = ?', [auth()->user()->id]);
+      $freecount = count($freedata);
+      $paidcount = count($paiddata);
+
+      
+      if($paidcount == 1)
+      {
+        $count = $paidcount;
+      }
+      else
+      {
+        $count = $freecount;
+      }
       return view('dashboard', ['count' => $count]);
     }
 
 
-    public function add()
+    public function add()                                 // view AddDetails page
     { 
       $data = DB::select('select * from data where user_id = ?', [auth()->user()->id]);
-        
-      return view('addDetails', ['data' => $data]); 
+      $vcf = DB::select('select * from vcf where user_id = ?', [auth()->user()->id]);
+      $count = count($data);
+      $vcfcount = count($vcf);
+      return view('addDetails', ['data' => $data])->with('count',$count)->with('vcfcount',$vcfcount); 
     }
 
 
-    public function store(Request $req)
+    public function store(Request $req)                  // store basic details
     {
         $businessname = $req->input('businessname');
         $tagline = $req->input('tagline');
@@ -57,7 +71,7 @@ class DashboardController extends Controller
         $instaLink = $req->input('instaLink');
         $linkedinLink = $req->input('linkedinLink');
         $aboutUs = $req->input('aboutUs');
-       
+        $website = $req->input('website');
        
 
         $user_id = auth()->user()->id;
@@ -71,15 +85,6 @@ class DashboardController extends Controller
         $destinationPath = 'public/Cover-img/';
         $originalFile3 = $file3->getClientOriginalName();
         $file3->move($destinationPath, $originalFile3);
-
-
-        $file2 = $req->file('vcf');
-        if($file2 != NULL)
-        {
-          $destinationPath = 'public/vcf/';
-          $originalFile2 = $file2->getClientOriginalName();
-          $file2->move($destinationPath, $originalFile2);
-        }
 
         $idCheck = DB::select('select * from data where user_id = ?', [$user_id]);
         $idCount = 0;
@@ -98,25 +103,14 @@ class DashboardController extends Controller
         setcookie('email',$email);
         setcookie('link',$link);
 
-        if($file2 != NULL){
+      
 
-        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'vcf' => $originalFile2, 'link' => $link, 'user_id' => $user_id);
-        }
+        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode,'website'=>$website, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'link' => $link, 'user_id' => $user_id);
+       
 
-        else{
-             $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode ,'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'link' => $link, 'user_id' => $user_id);
-        }
+   
 
         DB::table('data')->insert($data);
-
-        // $maildata = array(
-
-        //   'name' => $req->name, 
-        //   'link' => $link,
-
-        // );
-
-        // Mail::to($email)->send(new LinkMail($maildata));
 
         session()->flash('success', 'Data has been saved successfully !'); 
 
@@ -135,7 +129,7 @@ class DashboardController extends Controller
 
     }
 
-    public function service_store(Request $req)
+    public function service_store(Request $req)                         // store services
     {
         // $title = $req->input('title');
         // $body = $req->input('body');
@@ -159,58 +153,110 @@ class DashboardController extends Controller
         }
         session()->flash('service_success', 'Service Added !'); 
 
-        return back();
+        return redirect('/add#service-form');
        
 
     }
 
-    public function project_store(Request $req)
+    public function project_store(Request $req)                             // store Projects
     {
         $title = $req->input('title');
         $body = $req->input('body');
 
         $file = $req->file('image');
         $file1 = $req->file('image1');
-        $arr_len = count($file);
-       
-        // echo $arr_len;
 
-        for($i=0; $i<$arr_len; $i++){
-          $destinationPath = 'public/project-images/';
-          $originalFile[$i] = $file[$i]->getClientOriginalName();
-          $file[$i]->move($destinationPath, $originalFile[$i]);
-        }
+        if($req->hasFile('image')){
+          $arr_len = count($file);
 
-        if($file1 != NULL){
-          $arr_len1 = count($file1);
-          for($i=0; $i<$arr_len1; $i++){
+          for($i=0; $i<$arr_len; $i++){
             $destinationPath = 'public/project-images/';
-            $originalFile1[$i] = $file1[$i]->getClientOriginalName();
-            $file1[$i]->move($destinationPath, $originalFile1[$i]);
+            $size[$i] = $file[$i]->getSize();
+            if($size[$i] < 200000){
+
+              $originalFile[$i] = $file[$i]->getClientOriginalName();
+              $file[$i]->move($destinationPath, $originalFile[$i]);
+            }
+            else
+            {
+              return redirect('/add')->with('image_error', 'large'); 
+            }
           }
         }
 
+        if($req->hasFile('image1')){
+          $arr_len1 = count($file1);
+          for($i=0; $i<$arr_len1; $i++){
+
+            $destinationPath = 'public/project-images/';
+
+            $size1[$i] = $file1[$i]->getSize();
+            if($size1[$i] < 200000){
+
+              $originalFile1[$i] = $file1[$i]->getClientOriginalName();
+              $file1[$i]->move($destinationPath, $originalFile1[$i]);
+
+            }
+            else{return redirect('/add')->with('image_error', 'large'); }
+
+          } 
+        }
 
         $user_id = auth()->user()->id;
+
         foreach($title as $item=>$v){
-        if($file1 != NULL){
-          $data = array('title' => $title[$item], 'body' => $body[$item], 'image' => $originalFile[$item],'image1' => $originalFile1[$item], 'user_id' => $user_id);
+  
+
+          if($file == NULL && $file1 == NULL){
+            $data = array('title' => $title[$item], 'body' => $body[$item], 'user_id' => $user_id);
+          }
+
+          elseif($file == NULL){
+            $data = array('title' => $title[$item], 'body' => $body[$item],'image1' => $originalFile1[$item], 'user_id' => $user_id);
+          }
+     
+          elseif($file1 == NULL){
+            $data = array('title' => $title[$item], 'body' => $body[$item],'image' => $originalFile[$item], 'user_id' => $user_id);
+          }
+
+          elseif($file != NULL && $file1 != NULL){
+            
+            $data = array('title' => $title[$item], 'body' => $body[$item], 'image' => $originalFile[$item],'image1' => $originalFile1[$item], 'user_id' => $user_id);
+          }
+
+
+          DB::table('projects')->insert($data);
         }
-        else{
-          $data = array('title' => $title[$item], 'body' => $body[$item], 'image' => $originalFile[$item], 'user_id' => $user_id);
-        }
-        DB::table('projects')->insert($data);
-        }
+
         session()->flash('project_success', 'Data has been saved successfully !'); 
 
-        return back();
+        return redirect('/add#project-form');
 
        
     }
 
+    public function vcf(Request $req)                                   // store VCF
+    {
+      $vcf = $req->file('vcf');
 
-    
-    public function link(Request $req)
+      $user_id = auth()->user()->id;
+
+      $destinationPath = 'public/vcfnew/';
+      $originalFile = $vcf->getClientOriginalName();
+      $imageext = $vcf->getClientOriginalExtension();
+      $newName = rand(12456, 999999).".".$imageext;
+      $vcf->move($destinationPath, $newName);
+
+      $data = array('name' => $newName, 'user_id' => $user_id); 
+      DB::table('vcf')->insert($data);
+
+      session()->flash('vcfUploaded', 'VCF Uploaded Successfully !'); 
+      return back();
+
+    }
+
+
+    public function link(Request $req)                                // send card link
     {
 
         $name = $_COOKIE['name'];
@@ -232,28 +278,31 @@ class DashboardController extends Controller
     }
 
 
-    public function myDetails(){
+    public function myDetails(){                                    // view mydetails page
 
 
       $id = auth()->user()->id;
       $data = DB::select('select * from data where user_id = ?', [$id]);
       $serviceData = DB::select('select * from services where user_id = ?', [$id]);
       $projectData = DB::select('select * from projects where user_id = ?', [$id]);
+      $vcfData = DB::select('select * from vcf where user_id = ?', [$id]);
+
       $idCount = 0;
 
         foreach ($data as $luck) {
 
           $idCount++;
-        }
-        
-      return view('mydetails', ['data' => $data], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('idCount',$idCount);
+        } 
+      $serviceCount = count($serviceData);
+      $projectCount = count($projectData);
+      return view('mydetails', ['data' => $data], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('vcfData',$vcfData)->with('idCount',$idCount)->with('serviceCount',$serviceCount)->with('projectCount',$projectCount);
 
  
 
 
     }
 
-    public function showbasicDetails($id){
+    public function showbasicDetails($id){                                // show basic details for edit
 
       $data = DB::select('select * from data where id = ?', [$id]); 
           
@@ -264,7 +313,7 @@ class DashboardController extends Controller
 
     }
 
-    public function editbasicDetails(Request $req,$id){
+    public function editbasicDetails(Request $req,$id){                   // edit basic details
 
 
         $businessname = $req->input('businessname');
@@ -273,6 +322,7 @@ class DashboardController extends Controller
         $number = $req->input('number');
         $email = $req->input('email');
         $address = $req->input('address');
+        $website = $req->input('website');
         $fbLink = $req->input('fbLink');
         $twitterLink = $req->input('twitterLink');
         $instaLink = $req->input('instaLink');
@@ -294,13 +344,7 @@ class DashboardController extends Controller
         $file3->move($destinationPath, $originalFile3);
         }
 
-        $file2 = $req->file('vcf');
-        if($file2 != NULL)
-        {
-          $destinationPath = 'public/vcf/';
-          $originalFile2 = $file2->getClientOriginalName();
-          $file2->move($destinationPath, $originalFile2);
-        }
+  
           
         DB::update('update data set businessname = ? where id = ?',[$businessname,$id]); 
         DB::update('update data set tagline = ? where id = ?',[$tagline,$id]); 
@@ -308,6 +352,7 @@ class DashboardController extends Controller
         DB::update('update data set number = ? where id = ?',[$number,$id]); 
         DB::update('update data set email = ? where id = ?',[$email,$id]); 
         DB::update('update data set address = ? where id = ?',[$address,$id]); 
+        DB::update('update data set website = ? where id = ?',[$website,$id]); 
         DB::update('update data set fbLink = ? where id = ?',[$fbLink,$id]); 
         DB::update('update data set twitterLink = ? where id = ?',[$twitterLink,$id]); 
         DB::update('update data set instaLink = ? where id = ?',[$instaLink,$id]); 
@@ -319,9 +364,7 @@ class DashboardController extends Controller
         if($file3 != NULL){
         DB::update('update data set image2 = ? where id = ?',[$originalFile3,$id]);
         }
-        if($file2 != NULL){
-        DB::update('update data set vcf = ? where id = ?',[$originalFile2,$id]);
-        }
+     
         return redirect('/my-details')->with('updated', 'Details has been updated successfully'); 
 
   
@@ -330,7 +373,7 @@ class DashboardController extends Controller
     }
  
 
-    public function showserviceDetails($id){
+    public function showserviceDetails($id){                                    // show service details for edit
 
       $data = DB::select('select * from services where id = ?', [$id]); 
           
@@ -339,7 +382,7 @@ class DashboardController extends Controller
     }
 
 
-    public function editserviceDetails(Request $req,$id){
+    public function editserviceDetails(Request $req,$id){                       // edit services
 
 
         $title = $req->input('title');
@@ -353,7 +396,7 @@ class DashboardController extends Controller
 
     }
 
-    public function showprojectDetails($id){
+    public function showprojectDetails($id){                                  // show projects for edit
 
       $data = DB::select('select * from projects where id = ?', [$id]); 
           
@@ -362,7 +405,7 @@ class DashboardController extends Controller
     }
 
 
-    public function editprojectDetails(Request $req,$id){
+    public function editprojectDetails(Request $req,$id){                     // edit projects
 
 
         $title = $req->input('title');
@@ -401,16 +444,21 @@ class DashboardController extends Controller
     }
 
 
+    public function editvcf(Request $req,$id){                              // edit VCF
+
+      $file = $req->file('vcf');
+
+      $destinationPath = 'public/vcfnew/';
+      $originalFile = $file->getClientOriginalName();
+      $file->move($destinationPath, $originalFile);
+
+      DB::update('update vcf set name = ? where id = ?',[$originalFile,$id]); 
+      return redirect('/my-details')->with('updated', 'Details has been updated successfully'); 
 
 
 
 
-
-
-
-
-
-
+    }
 
 
 

@@ -9,23 +9,23 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 
 class ViewController extends Controller
-{
+{ 
     public function dynamicview($id)
     {
 
         $stud = DB::select('select * from data where user_id = ?', [$id]);
         $serviceData = DB::select('select * from services where user_id = ?', [$id]);
         $projectData = DB::select('select * from projects where user_id = ?', [$id]);
+        $vcfData = DB::select('select * from vcf where user_id = ?', [$id]); 
 
-        $adress = DB::select('select * from data where user_id = ?', [$id]);
        
-        foreach ($adress as $test) {
+        foreach ($stud as $test) {
 
           $add = $test->address;
           $pincode = $test->pincode; 
 
           $full = $add.$pincode;
-          Mapper::location($full)->map(['zoom' => 15, 'marker' => true, 'type' => 'NORMAL']);
+          Mapper::location($full)->map(['zoom' => 15, 'marker' => true, 'direction'=>true,'type' => 'NORMAL']);
         }
         
 
@@ -46,7 +46,7 @@ class ViewController extends Controller
           }
           if($days <= 365)
           {
-            return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData);
+            return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('vcfData',$vcfData);
           }
 
           else{echo"account expired";}
@@ -70,7 +70,7 @@ class ViewController extends Controller
           }
           if($daysLeft <= 15)
             {
-              return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData);
+              return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('vcfData',$vcfData);
             }
 
           else{echo"account expired";}

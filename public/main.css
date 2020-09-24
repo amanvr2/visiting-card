@@ -12,7 +12,7 @@
   margin: 0;
   background-color: #293745;
   border: none;
-  height: 85px; 
+  height: 80px; 
   
 
 }
@@ -27,8 +27,8 @@ color: white;
 }
 
 .navbar-brand>img{
-  height: 75px;
-  width: 280px;
+  height: 80px;
+  width: 220px;
 }
 
 .navbar-brand{
@@ -41,7 +41,7 @@ color: white;
   border-radius: 2rem;
   background-color: white;
   color: #293745;
-  font-weight: 700;
+  font-weight: 700;margin-right: 10px;
 }
 .navbar-default .navbar-brand>a{
   vertical-align: middle;
@@ -808,7 +808,7 @@ color: white;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly; 
-  padding-bottom: 50px;
+  padding-bottom: 90px;
   align-items: center;
 }
 
@@ -890,6 +890,27 @@ th, td {
 .payment{height: 630px;justify-content: center;display: flex;background-color: white;}
 
 .payment-list{display: flex;flex-flow: row;justify-content: space-evenly;width: 70%;align-items: center;}
+
+.forgot{height: 600px;background-color: white;display: flex;align-items: center;}
+.forgot-sub{width: 100%;display: flex;justify-content: center;}
+.forgot_form{box-shadow: 0 0 4px 1px;width: 40%;padding: 40px;display: flex;justify-content: center;flex-flow: column;}
+
+.otp-main{height: 600px;background-color: white;display: flex;align-items: center;}
+.otp-sub{display: flex;justify-content: center;width: 100%;}
+.otp-form{box-shadow: 0 0 4px 1px lightgray;padding: 40px;display: flex;flex-flow: column;justify-content: center;width: 40%;}
+
+.vcf{height: 400px;width: 100%;}
+.vcf-list{width: 100%;display: flex;justify-content: center;}
+.vcf-item{width: 70%;box-shadow: 0 0 4px 1px lightgray;background-color: white;height: auto;border-radius: 0.5rem;padding: 50px;}
+
+
+
+
+
+
+
+
+
 
 
 

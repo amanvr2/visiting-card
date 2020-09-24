@@ -31,7 +31,7 @@
       <img src="/images/share1.png" alt="signup">
 
       <h4> Sign Up </h4>
-      <p> Create your free account </p>
+      <p> Create your free account in single step </p>
 
 
     </div>
@@ -72,7 +72,7 @@
 
     <div class="feature-img">
 
-      <img src="/images/features.png">
+      <img src="/images/features1.png">
 
     </div>
     <div class="feature-item">

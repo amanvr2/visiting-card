@@ -22,24 +22,26 @@
 
     @if($idCount == 0) 
       <p> No Details Added </p> 
+      <a href="/add"> Add Now </a>
     @else
 
     @foreach($data as $user)
-
+ 
      
       <img src="{{ asset('/public/Cover-img/' . $user->image2) }}" id="cover"> 
       <img src="{{ asset('/public/img/' . $user->image1) }}" id="profile">
       <div class="myDetails-content"> 
-        <p> <b>Business Name :</b> {{ $user->businessname }} </p>  
-        <p> <b>Business Tagline :</b> {{ $user->tagline }} </p>
+        <p> <b> Business Name :</b> {{ $user->businessname }} </p>  
+        <p> <b> Business Tagline :</b> {{ $user->tagline }} </p>
         <p> <b> Name :</b> {{ $user->name }} </p>
         <p> <b> Number :</b> {{ $user->number }} </p>
         <p> <b> Email :</b> {{ $user->email }} </p>
         <p> <b> Address :</b> {{ $user->address }} </p>
+        <p> <b> Website Link :</b> {{ $user->website }} </p>
         <p> <b> Facebook Link :</b> {{ $user->fbLink }} </p>
         <p> <b> Twitter Link :</b> {{ $user->twitterLink }} </p> 
-        <p> <b>Instagram Link :</b> {{ $user->instaLink }} </p>
-        <p> <b>Linkedin Link :</b> {{ $user->linkedinLink }} </p>
+        <p> <b> Instagram Link :</b> {{ $user->instaLink }} </p>
+        <p> <b> Linkedin Link :</b> {{ $user->linkedinLink }} </p>
         <p> <b> About Us :</b> {{ $user->aboutUs }} </p>
         <p> <b> My Link :</b> {{ $user->link }} </p><br>
         <a href="/show-basicDetails/{{ $user->id }}" id="editbigbtn" role="button" class="btn btn-primary">Edit</a> 
@@ -64,6 +66,12 @@
 <div class="myservice">
   <div class="myservice-sub"> 
   <h1>My Services</h1>
+
+    @if($serviceCount == 0) 
+      <p> No Services Added </p> 
+      <a href="/add"> Add Now </a>
+    @else
+
     @foreach($serviceData as $user)
  
     <div class="myservice-item">
@@ -84,6 +92,7 @@
 
     </div>
     @endforeach 
+    @endif
   </div>
 </div> 
   
@@ -91,7 +100,13 @@
 <div class="myproject"> 
   <div class="myproject-sub">
   <h1>My Projects</h1>
-@foreach($projectData as $user)
+
+    @if($projectCount == 0) 
+      <p> No Projects Added </p> 
+      <a href="/add"> Add Now </a>
+    @else
+
+    @foreach($projectData as $user)
 
       <div class="project-item"> 
 
@@ -116,7 +131,8 @@
 
       </div>
 
-@endforeach
+    @endforeach
+    @endif
 </div> 
 </div>
 
@@ -124,7 +140,31 @@
 
 
 
+@foreach($vcfData as $user)
+  
+  <div class="update">
+    <div class="update-sub"><h2> Edit VCF </h2>
+      <form action="/edit-vcf/{{ $user->id }}" class="form-group" method="POST" enctype="multipart/form-data"> 
 
+  
+        @csrf
+
+       <label> VCF : </label><input type="file" name="vcf" class="form-control" required>
+
+       
+        <br>
+      
+
+        <button type="submit" name="submit" id="saveBtn"class="btn btn-success"><i id="saveIcon" class="fa fa-floppy-o" aria-hidden="true"></i>Update</button>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+@endforeach
 
 
 

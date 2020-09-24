@@ -33,13 +33,20 @@
           @if($user->fbLink != NULL)
 
           <div class="social-item">
-              <a href="{{ $user->fbLink }}"><img src="/images/facebook.png"></a>
+            <a href="{{ $user->fbLink }}"><img src="/images/facebook.png"></a>
 
           </div>
 
           @endif
           
-         
+          @if($user->website != NULL)
+
+          <div class="social-item">
+            <a href="{{ $user->website }}"><img src="/images/facebook.png"></a>
+
+          </div>
+
+          @endif
 
           @if($user->twitterLink != NULL)
 
@@ -85,16 +92,21 @@
 <!-- ///////////////////////////////////////   Save me / Call me ////////////////////////////////////////////////// -->
 
   <div class="call">
+
+   <div class="call-item">
+
+      <a href="tel:{{$user->number}}" role="button" class="btn btn-danger"><i class="fa fa-phone" aria-hidden="true"></i> Call me</a>
+
+    </div>
+@endforeach
+
+    @foreach($vcfData as $user)
       <div class="call-item">
-          <a href="{{ asset('/public/vcf/' . $user->vcf) }}" role="button" class="btn btn-success" download=""><i class="fa fa-download" aria-hidden="true"></i> Save me</a>
+        <a href="{{ asset('/public/vcfnew/' . $user->name) }}" role="button" class="btn btn-success" download=""><i class="fa fa-download" aria-hidden="true"></i> Save me</a>
 
       </div>
-
-      <div class="call-item">
-
-          <a href="tel:{{$user->number}}" role="button" class="btn btn-danger"><i class="fa fa-phone" aria-hidden="true"></i> Call me</a>
-
-      </div>
+    @endforeach
+     
 
   </div>
 
@@ -115,6 +127,7 @@
       </div>
       <div id="collapse1" class="panel-collapse collapse in">
         <div class="panel-body"> 
+          @foreach($stud as $user)
           <div class="about-brief">
 
             <h2> {{ $user->aboutUs}} </h2>
@@ -122,7 +135,7 @@
 
           </div>
 
-          
+          @endforeach
     
 
         </div>
@@ -209,11 +222,6 @@
 
 
 
-
-@endforeach
-
-
-
 <!-- 
 //////////////////////////////////  Map and Address ////////////////////////////// -->
 
@@ -227,7 +235,7 @@
             <div style="width: 500px; height: 300px;">
 	            {!! Mapper::render() !!}
             </div>
-           
+          <a href="https://goo.gl/maps/iHNUn8VPNf92MA5G9" target="_blank">Get My directions </a>
 
         </div>
 

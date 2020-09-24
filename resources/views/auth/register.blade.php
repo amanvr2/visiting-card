@@ -86,7 +86,7 @@
                         </div>
 
                         <div id ="signup" onClick="togglePage('login','register')">Already have an account? <a style="color:white;"href = "#">Sign In </a></div>
-
+                        <a href="/forgot-password">Forgot Password ? </a>
 
                     </form>
 

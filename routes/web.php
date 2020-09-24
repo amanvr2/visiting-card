@@ -21,6 +21,7 @@ Route::get('/demo', function () {
     return view('welcome');
 });
 
+
 Route::get('/card/{id}', 'ViewController@dynamicview');
 
 Auth::routes();
@@ -34,6 +35,8 @@ Route::post('/save', 'DashboardController@store');
 Route::post('/service-save', 'DashboardController@service_store');
 
 Route::post('/project-save', 'DashboardController@project_store');
+
+Route::post('/vcf-save', 'DashboardController@vcf');
 
 Route::post('/mail-sent/{email}', 'ViewController@contact_mail');
 
@@ -51,16 +54,21 @@ Route::post('/edit-serviceDetails/{id}', 'DashboardController@editserviceDetails
 Route::get('/show-projectDetails/{id}', 'DashboardController@showprojectDetails');    
 Route::post('/edit-projectDetails/{id}', 'DashboardController@editprojectDetails');  
 
+Route::post('/edit-vcf/{id}', 'DashboardController@editvcf');
 
 Route::get('/freeTrial', 'PaymentController@freeTrial');   
 
+Route::get('/forgot-password', function () {
+    return view('forgotPassword.number');
+});
+
+Route::get('/otp-sent','ForgotpasswordController@otp_sent');
+ 
+Route::get('/verify','ForgotpasswordController@verify');
+
+Route::get('/change', 'ForgotpasswordController@change');  
 
  
-
-
-
-
-
 
 
 
