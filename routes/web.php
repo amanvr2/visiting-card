@@ -21,6 +21,10 @@ Route::get('/demo', function () {
     return view('welcome');
 });
 
+Route::get('/howitWorks', function () {
+    return view('howitworks');
+});
+
 
 Route::get('/card/{id}', 'ViewController@dynamicview');
 

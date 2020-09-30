@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ForgotpasswordController extends Controller
 {
-  public function otp_sent(Request $req)
+  public function otp_sent(Request $req)                                        // OTP sent
     {
 
         $no = $req->input('no');
@@ -54,7 +54,7 @@ class ForgotpasswordController extends Controller
 
     }
 
-    public function verify(Request $req)
+    public function verify(Request $req)                                // verify OTP
 
     {
 
@@ -75,7 +75,7 @@ class ForgotpasswordController extends Controller
 
     }
 
-    public function change(Request $req){
+    public function change(Request $req){                                   // recover password
 
       $pass = $req->input('pass');
       $pass = Hash::make($pass);

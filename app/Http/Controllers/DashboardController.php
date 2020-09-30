@@ -70,6 +70,7 @@ class DashboardController extends Controller
         $twitterLink = $req->input('twitterLink');
         $instaLink = $req->input('instaLink');
         $linkedinLink = $req->input('linkedinLink');
+        $maplink = $req->input('maplink');
         $aboutUs = $req->input('aboutUs');
         $website = $req->input('website');
        
@@ -99,13 +100,13 @@ class DashboardController extends Controller
 
         $link = "/card/" . $user_id;
 
-        setcookie('name',$name);
-        setcookie('email',$email);
-        setcookie('link',$link);
+        // setcookie('name',$name);
+        // setcookie('email',$email);
+        // setcookie('link',$link);
 
       
 
-        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode,'website'=>$website, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'link' => $link, 'user_id' => $user_id);
+        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode,'website'=>$website, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'maplink'=>$maplink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'link' => $link, 'user_id' => $user_id);
        
 
    
@@ -166,16 +167,39 @@ class DashboardController extends Controller
         $file = $req->file('image');
         $file1 = $req->file('image1');
 
-        if($req->hasFile('image')){
-          $arr_len = count($file);
+        // echo $file1,gettype($file1);
 
-          for($i=0; $i<$arr_len; $i++){
+        $array  = array($file,$file1);
+
+        $count = count($array);
+        
+        $filteredArray = array();
+
+        for($i=0;$i<$count;$i++){
+
+          if($array[$i] != NULL){
+
+            array_push($filteredArray,$array[$i]);
+
+
+          }
+
+        }
+
+        // echo count($filteredArray);
+
+       // if($req->hasFile('image')){
+        for($j=0; $j<count($filteredArray);$j++){
+           $arr_len = count($filteredArray[$j]);
+         for($i=0; $i<$arr_len; $i++){
             $destinationPath = 'public/project-images/';
-            $size[$i] = $file[$i]->getSize();
+            $size[$i] = $filteredArray[$j][$i]->getSize();
             if($size[$i] < 200000){
 
-              $originalFile[$i] = $file[$i]->getClientOriginalName();
-              $file[$i]->move($destinationPath, $originalFile[$i]);
+              $originalFile[$i] = $filteredArray[$j][$i]->getClientOriginalName();
+              $filteredArray[$j][$i]->move($destinationPath, $originalFile[$i]);
+
+
             }
             else
             {
@@ -183,46 +207,49 @@ class DashboardController extends Controller
             }
           }
         }
+         
+          
+         
+        
 
-        if($req->hasFile('image1')){
-          $arr_len1 = count($file1);
-          for($i=0; $i<$arr_len1; $i++){
+        // if($req->hasFile('image1')){
+        //   $arr_len1 = count($file1);
+        //   for($i=0; $i<$arr_len1; $i++){
 
-            $destinationPath = 'public/project-images/';
+        //     $destinationPath = 'public/project-images/';
 
-            $size1[$i] = $file1[$i]->getSize();
-            if($size1[$i] < 200000){
+        //     $size1[$i] = $file1[$i]->getSize();
+        //     if($size1[$i] < 200000){
 
-              $originalFile1[$i] = $file1[$i]->getClientOriginalName();
-              $file1[$i]->move($destinationPath, $originalFile1[$i]);
+        //       $originalFile1[$i] = $file1[$i]->getClientOriginalName();
+        //       $file1[$i]->move($destinationPath, $originalFile1[$i]);
 
-            }
-            else{return redirect('/add')->with('image_error', 'large'); }
+        //     }
+        //     else{return redirect('/add')->with('image_error', 'large'); }
 
-          } 
-        }
+        //   } 
+        // }
 
         $user_id = auth()->user()->id;
 
         foreach($title as $item=>$v){
   
-
-          if($file == NULL && $file1 == NULL){
-            $data = array('title' => $title[$item], 'body' => $body[$item], 'user_id' => $user_id);
-          }
-
-          elseif($file == NULL){
-            $data = array('title' => $title[$item], 'body' => $body[$item],'image1' => $originalFile1[$item], 'user_id' => $user_id);
-          }
-     
-          elseif($file1 == NULL){
-            $data = array('title' => $title[$item], 'body' => $body[$item],'image' => $originalFile[$item], 'user_id' => $user_id);
-          }
-
-          elseif($file != NULL && $file1 != NULL){
+          $data = array('title' => $title[$item], 'body' => $body[$item], 'user_id' => $user_id);
+          for($j=0; $j<count($filteredArray);$j +=2){
             
-            $data = array('title' => $title[$item], 'body' => $body[$item], 'image' => $originalFile[$item],'image1' => $originalFile1[$item], 'user_id' => $user_id);
+            if($filteredArray[$j+1] && $filteredArray[$j] ){
+               array_push($data, ['image' => $originalFile[$item]],['image1' => $originalFile1[$item]]);
+
+            }
+            elseif ($filteredArray[$j]) {
+               array_push($data, ['image' => $originalFile[$item]]);
+            }elseif($filteredArray[$j+1]) {
+              array_push($data,['image1' => $originalFile1[$item]]);
+            }
+
           }
+
+
 
 
           DB::table('projects')->insert($data);
@@ -255,13 +282,26 @@ class DashboardController extends Controller
 
     }
 
-
+ 
     public function link(Request $req)                                // send card link
     {
 
-        $name = $_COOKIE['name'];
-        $email = $_COOKIE['email']; 
-        $link = $_COOKIE['link']; 
+        // $name = $_COOKIE['name'];
+        // $email = $_COOKIE['email']; 
+        // $link = $_COOKIE['link']; 
+        $id = auth()->user()->id;
+
+        $data = DB::select('select * from data where user_id = ?',[$id]);
+
+        foreach($data as $user){
+
+          $name = $user->name;
+          $link = $user->link;
+          $email = $user->email;
+          $no = $user->number;
+
+          
+        }
 
         $maildata = array(
 
@@ -271,6 +311,28 @@ class DashboardController extends Controller
         );
 
         Mail::to($email)->send(new LinkMail($maildata));
+
+        $curl_url = 'http://bulksmsindia.mobi/sendurlcomma.aspx';
+        $ch = curl_init();
+        $curlConfig = array(
+            CURLOPT_URL => $curl_url,
+            CURLOPT_POST => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => array(
+                'user' => '20083281',
+                'pwd' => 'Mudra@1234',
+                'senderid' => 'MYCRED',
+                'mobileno' => $no,
+                'msgtext' => 'Greetings !!! Your Digital Card Link is : '.$link,
+            ),
+        );
+        curl_setopt_array($ch, $curlConfig);
+        if ($result = curl_exec($ch)) {
+            curl_close($ch);
+            
+
+        }
+
 
         session()->flash('email', 'Link Sent !'); 
 
@@ -327,9 +389,10 @@ class DashboardController extends Controller
         $twitterLink = $req->input('twitterLink');
         $instaLink = $req->input('instaLink');
         $linkedinLink = $req->input('linkedinLink');
+        $maplink = $req->input('maplink');
         $aboutUs = $req->input('aboutUs');
 
-        
+         
         $file1 = $req->file('image1');
         if($file1 != NULL){
           $destinationPath = 'public/img/';
@@ -357,6 +420,7 @@ class DashboardController extends Controller
         DB::update('update data set twitterLink = ? where id = ?',[$twitterLink,$id]); 
         DB::update('update data set instaLink = ? where id = ?',[$instaLink,$id]); 
         DB::update('update data set linkedinLink = ? where id = ?',[$linkedinLink,$id]); 
+        DB::update('update data set maplink = ? where id = ?',[$maplink,$id]); 
         DB::update('update data set aboutUs = ? where id = ?',[$aboutUs,$id]);
         if($file1 != NULL){
           DB::update('update data set image1 = ? where id = ?',[$originalFile1,$id]);

@@ -17,6 +17,8 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/howitWorks" ><span class="glyphicon glyphicon-user"></span> How it Works</a></li>
+
                     @if(Auth::guest())
                         <li><a href="{{ route('register') }}" id="signupBtn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a href="{{ route('login') }}" id=""><span class="glyphicon glyphicon-user"></span> Log In</a></li>

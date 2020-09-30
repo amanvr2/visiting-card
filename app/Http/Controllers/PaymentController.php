@@ -7,7 +7,7 @@ use DB;
  
 class PaymentController extends Controller
 {
-  public function freeTrial(){
+  public function freeTrial(){                                        // registers user in free trial plan
 
     $id = auth()->user()->id;
     $data = array('planType' => 'free', 'user_id' => $id);

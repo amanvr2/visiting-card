@@ -62,8 +62,11 @@
             Email * : <input type="text" name="email" class="form-control" required>
 
             Full Address * : <input type="text" name="address" class="form-control" required>
+
             Pincode * : <input type="text" name="pincode" class="form-control" required>
+
             Website Link : <input type="text" name="website" class="form-control">
+
             Facebook Link : <input type="text" name="fbLink" class="form-control"> 
 
             Twitter Link : <input type="text" name="twitterLink" class="form-control">
@@ -71,6 +74,8 @@
             Instagram Link : <input type="text" name="instaLink" class="form-control">
 
             linkedin Link : <input type="text" name="linkedinLink" class="form-control">
+
+            Google Map Link : <input type="text" name="maplink" class="form-control">
 
             About Us * : <input type="text" name="aboutUs" class="form-control" required>
 

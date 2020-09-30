@@ -42,6 +42,7 @@
         <p> <b> Twitter Link :</b> {{ $user->twitterLink }} </p> 
         <p> <b> Instagram Link :</b> {{ $user->instaLink }} </p>
         <p> <b> Linkedin Link :</b> {{ $user->linkedinLink }} </p>
+        <p> <b> Google Map Link :</b> {{ $user->maplink }} </p>
         <p> <b> About Us :</b> {{ $user->aboutUs }} </p>
         <p> <b> My Link :</b> {{ $user->link }} </p><br>
         <a href="/show-basicDetails/{{ $user->id }}" id="editbigbtn" role="button" class="btn btn-primary">Edit</a> 

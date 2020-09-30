@@ -235,7 +235,10 @@
             <div style="width: 500px; height: 300px;">
 	            {!! Mapper::render() !!}
             </div>
-          <a href="https://goo.gl/maps/iHNUn8VPNf92MA5G9" target="_blank">Get My directions </a>
+
+          @if($user->maplink != NULL)
+            <a href="{{ $user->maplink }}" target="_blank">Get My directions </a>
+          @endif
 
         </div>
 

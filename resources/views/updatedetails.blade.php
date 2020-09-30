@@ -25,7 +25,9 @@
       <label>Email : </label><input type="text" name="email" class="form-control" value="{{ $user->email}} " >
 
       <label>Full Address :</label> <input type="text" name="address" class="form-control" value="{{ $user->address}} " >
+
       <label>Website Link :</label> <input type="text" name="website" class="form-control" value="{{ $user->website}} ">
+
       <label>Facebook Link :</label> <input type="text" name="fbLink" class="form-control" value="{{ $user->fbLink}} ">
 
       <label>Twitter Link :</label> <input type="text" name="twitterLink" class="form-control" value="{{ $user->twitterLink}} ">
@@ -33,6 +35,8 @@
       <label>Instagram Link : </label><input type="text" name="instaLink" class="form-control" value="{{ $user->instaLink}} ">
 
       <label>linkedin Link : </label><input type="text" name="linkedinLink" class="form-control" value="{{ $user->linkedinLink}} ">
+
+      <label>Google Map Link : </label><input type="text" name="maplink" class="form-control" value="{{ $user->maplink}} ">
 
       <label>About Us :</label> <input type="text" name="aboutUs" class="form-control" value="{{ $user->aboutUs}} ">
 

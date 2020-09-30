@@ -10,7 +10,7 @@ use App\Mail\ContactMail;
 
 class ViewController extends Controller
 { 
-    public function dynamicview($id)
+    public function dynamicview($id)                                      // view Digital card with validations
     {
 
         $stud = DB::select('select * from data where user_id = ?', [$id]);
@@ -85,7 +85,7 @@ class ViewController extends Controller
     }   
 
         
-    public function contact_mail(Request $req, $email)
+    public function contact_mail(Request $req, $email)                    // send contact email
     {
 
         $maildata = array(
