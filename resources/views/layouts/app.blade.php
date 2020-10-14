@@ -38,6 +38,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="{{ asset('/js/a.js') }}"></script>
   <script src="{{ asset('/js/test.js') }}"></script>
+  <script src="{{ asset('/js/dark.js') }}"></script>
 
 
 </body>

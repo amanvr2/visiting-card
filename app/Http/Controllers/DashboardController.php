@@ -524,14 +524,19 @@ class DashboardController extends Controller
 
     }
 
+    public function serviceDelete($id){ 
 
+      DB::delete('delete from services where id = ?',[$id]);
+      return redirect('/my-details')->with('updated', 'Details has been updated successfully'); 
 
+    }
 
+    public function projectDelete($id){ 
 
+      DB::delete('delete from projects where id = ?',[$id]);
+      return redirect('/my-details')->with('updated', 'Details has been updated successfully'); 
 
-
-
-
+    }
 
 
 

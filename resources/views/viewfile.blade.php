@@ -2,6 +2,14 @@
 
 @section('content')
 
+
+<div class="dark">
+
+  <a onclick="dark()" role="button" class="btn btn-primary"><i class="fa fa-moon-o" aria-hidden="true"></i> Dark Mode</a>
+
+</div>
+
+
 @foreach($stud as $user)
 
   <!-- //////////////////   banner /////////////////////////////////////////////// -->
@@ -298,7 +306,7 @@
              {{ csrf_field() }}
 					  <div class="row">
 						<div class="col-25">
-						  <label for="fname">Full Name</label>
+						  <label id="contact-label" for="fname">Full Name</label>
 						</div>
 						<div class="col-75">
 						  <input type="text" id="fname" name="name" placeholder="    Your name.." required>
@@ -306,7 +314,7 @@
 					  </div>
 					  <div class="row">
 						<div class="col-25">
-						  <label for="lname">Email Address</label>
+						  <label id="contact-label" for="lname">Email Address</label>
 						</div>
 						<div class="col-75">
 						  <input type="text" id="fname" name="email" placeholder="    Email Address.." required>
@@ -315,7 +323,7 @@
 
 					  <div class="row">
 						<div class="col-25">
-						  <label for="lname">Phone Number</label>
+						  <label id="contact-label" for="lname">Phone Number</label>
 						</div>
 						<div class="col-75">
 						  <input type="text" id="fname" name="number" placeholder="    Phone Number" required>
@@ -324,7 +332,7 @@
 
 					  <div class="row">
 						<div class="col-25">
-						  <label for="subject">Message</label>
+						  <label id="contact-label" for="subject">Message</label>
 						</div>
 						<div class="col-75">
 						  <textarea id="fname" rows="4" name="subject" placeholder="Write something.." style="height:100px" required></textarea>

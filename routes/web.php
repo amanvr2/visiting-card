@@ -25,6 +25,10 @@ Route::get('/howitWorks', function () {
     return view('howitworks');
 });
 
+Route::get('/pricing', function () {
+    return view('pricing');
+});
+
 
 Route::get('/card/{id}', 'ViewController@dynamicview');
 
@@ -59,6 +63,9 @@ Route::get('/show-projectDetails/{id}', 'DashboardController@showprojectDetails'
 Route::post('/edit-projectDetails/{id}', 'DashboardController@editprojectDetails');  
 
 Route::post('/edit-vcf/{id}', 'DashboardController@editvcf');
+
+Route::get('/service-delete/{id}', 'DashboardController@serviceDelete');
+Route::get('/project-delete/{id}', 'DashboardController@projectDelete');
 
 Route::get('/freeTrial', 'PaymentController@freeTrial');   
 

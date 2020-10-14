@@ -81,13 +81,15 @@
           <h3> {{  $user->title }} </h3>  
           <p> {{  $user->body }} </p> 
         </div>
-
+        <br>
         <div class="myserviceItem-item">
           <a href="/show-serviceDetails/{{ $user->id }}" id="editbtn" role="button" class="btn btn-primary">Edit</a> 
+          <a href="/service-delete/{{ $user->id }}" id="editbtn" role="button" class="btn btn-danger">Delete</a> 
         </div>
+     
     
       </div>
-      
+       
 
 
 
@@ -125,6 +127,7 @@
             <h2> {{ $user->title }} </h2>
             <p> {{ $user->body }} </p>
             <a href="/show-projectDetails/{{ $user->id }}" id="editbtn" role="button" class="btn btn-primary">Edit</a>
+            <a href="/project-delete/{{ $user->id }}" id="editbtn" role="button" class="btn btn-danger">Delete</a>
           </div>
  
          

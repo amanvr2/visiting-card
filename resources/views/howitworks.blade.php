@@ -20,7 +20,7 @@
 <h1> <i class="fa fa-line-chart" aria-hidden="true"></i> Step By Step Guide </h1><br>
   <div class="workSteps-list">
   
-    <div class="workSteps-item">
+    <div class="workSteps-item" id="step-images">
 
       <img src="/images/work1.png">
 
