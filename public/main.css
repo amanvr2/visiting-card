@@ -10,7 +10,7 @@
 
 .navbar-default {
     margin: 0;
-    background-color: #293745;
+    background-color: #1F2E62;
     border: none;
     height: 80px;
 }
@@ -606,7 +606,6 @@ input[type="submit"] {
 .home-banner {
     background-image: url(./images/new-home.gif);
     background-size: cover;
-    background-attachment: fixed;
     height: 800px;
     display: flex;
     justify-content: flex-start;
@@ -747,9 +746,10 @@ input[type="submit"] {
     width: 355px;
 }
 
+
 .footer {
-    height: 100px;
-    background-color: black;
+    height: auto;
+    background-color: #1F2E62;
     display: flex;
     justify-content: flex-end;
     flex-flow: column;
@@ -933,6 +933,9 @@ td {
     justify-content: center;
     display: flex;
     background-color: white;
+    background-image: url('/images/plan.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .payment-list {
@@ -941,6 +944,15 @@ td {
     justify-content: space-evenly;
     width: 70%;
     align-items: center;
+}
+
+.payment-list>a {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    margin: 35px;
 }
 
 .forgot {
@@ -1209,21 +1221,112 @@ body {
     font-weight: 700;
 }
 
+.social-mediaIcons {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    width: 40%;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+#google_translate_element {
+    margin-top: 10px;
+    width: 200px;
+
+}
+
+.sidenav {
+    height: 73%;
+    width: 221px;
+    position: absolute;
+    z-index: 1;
+    top: 80px;
+    left: 0;
+    background-color: #F2F2F2;
+    overflow-x: hidden;
+    padding-top: 60px;
+    padding-left: 10px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+.sidenav a:hover {
+    background-color: #1F2E62;
+    color: white;
+}
 
 
+.dashDetails {
+    height: 630px;
 
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background-color: white;
+}
 
+.dashDetails>h1 {
+    background-color: #4CAF50;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
-
-
-
-
-
+.daysBox {
+    height: 100px;
+    width: 250px;
+    box-shadow: 0 0 4px 1px lightblue;
+    text-align: center;
+    border-radius: 0.5rem;
+    background-color: #1F2E62;
+    color: white;
+    margin-top: 100px;
+}
 
 
 
 
 @media screen and (max-width: 768px) {
+    .dashDetails>h1 {
+        background-color: #4CAF50;
+        color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 22px;
+    }
+
+    .daysBox>h2 {
+        font-size: 23px;
+    }
+
+    .dashDetails {
+        height: 535px;
+    }
+
+    .daysBox {
+        height: 66px;
+        width: 226px;
+        box-shadow: 0 0 4px 1px lightblue;
+        text-align: center;
+        border-radius: 0.5rem;
+        background-color: #1F2E62;
+        color: white;
+        margin-top: 100px;
+    }
+
+    .sidenav {
+        display: none;
+    }
+
     #fname {
         width: 280px;
         height: 30px;
@@ -1567,5 +1670,18 @@ body {
 
     .myserviceItem-item {
         width: 90%;
+    }
+
+    .payment-list {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        width: 70%;
+        align-items: center;
+
+    }
+
+    .payment-list>a {
+        font-size: 19px;
     }
 }

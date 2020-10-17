@@ -12,6 +12,12 @@ class ViewController extends Controller
 { 
     public function dynamicview($id)                                      // view Digital card with validations
     {
+      if ( filter_var($id, FILTER_VALIDATE_INT) === false ) {
+        echo "Your variable is not an integer";
+      }
+
+      else{
+      
 
         $stud = DB::select('select * from data where user_id = ?', [$id]);
         $serviceData = DB::select('select * from services where user_id = ?', [$id]);
@@ -79,9 +85,9 @@ class ViewController extends Controller
         }
 
           
-        else{echo "Not registered";}
-
-
+        else{echo "Please select plan type after loggin in your account to activate your card";}
+      }
+      
     }   
 
         

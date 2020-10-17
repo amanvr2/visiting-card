@@ -34,17 +34,52 @@ class DashboardController extends Controller
       $freecount = count($freedata);
       $paidcount = count($paiddata);
 
-      
+       
       if($paidcount == 1)
       {
         $count = $paidcount;
+        foreach($paiddata as $user){
+          $regdate = $user->dateTime;
+          $regsdate = strtotime($regdate);
+          $daysGone = ceil(( time() - $regsdate )/60/60/24);
+          $daysLeft = 365 - $daysGone;
+
+          if($daysLeft<0){
+              $daysLeft =0;
+              
+          }
+
+        }
+        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft);
       }
-      else
+
+      elseif($freecount == 1)
       {
         $count = $freecount;
+        foreach($freedata as $user){
+          $regdate = $user->dateTime;
+          $regsdate = strtotime($regdate);
+          $daysGone = ceil(( time() - $regsdate )/60/60/24);
+          $daysLeft = 15 - $daysGone;
+
+          if($daysLeft<0){
+              $daysLeft =0;
+              
+          }
+
+        }
+        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft);
       }
+
+      else{
+      $count=0;
       return view('dashboard', ['count' => $count]);
+      }
     }
+
+
+
+
 
 
     public function add()                                 // view AddDetails page
@@ -99,12 +134,6 @@ class DashboardController extends Controller
         if($idCount == 0){
 
         $link = "/card/" . $user_id;
-
-        // setcookie('name',$name);
-        // setcookie('email',$email);
-        // setcookie('link',$link);
-
-      
 
         $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode,'website'=>$website, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'maplink'=>$maplink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'link' => $link, 'user_id' => $user_id);
        
@@ -286,9 +315,7 @@ class DashboardController extends Controller
     public function link(Request $req)                                // send card link
     {
 
-        // $name = $_COOKIE['name'];
-        // $email = $_COOKIE['email']; 
-        // $link = $_COOKIE['link']; 
+   
         $id = auth()->user()->id;
 
         $data = DB::select('select * from data where user_id = ?',[$id]);
@@ -323,7 +350,7 @@ class DashboardController extends Controller
                 'pwd' => 'Mudra@1234',
                 'senderid' => 'MYCRED',
                 'mobileno' => $no,
-                'msgtext' => 'Greetings !!! Your Digital Card Link is : '.$link,
+                'msgtext' => 'Greetings  ' .$name. '   !!!  '.  '  Your Digital Card Link is : '.$link,
             ),
         );
         curl_setopt_array($ch, $curlConfig);

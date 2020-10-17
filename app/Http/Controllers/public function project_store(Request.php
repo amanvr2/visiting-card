@@ -76,3 +76,25 @@
 
        
     }
+
+
+ public function index()
+    { 
+   
+    
+      $freedata = DB::select('select * from freetrial where user_id = ?', [auth()->user()->id]);
+      $paiddata = DB::select('select * from paid_members where user_id = ?', [auth()->user()->id]);
+      $freecount = count($freedata);
+      $paidcount = count($paiddata);
+
+      
+      if($paidcount == 1)
+      {
+        $count = $paidcount;
+      }
+      else
+      {
+        $count = $freecount;
+      }
+      return view('dashboard', ['count' => $count]);
+    }
