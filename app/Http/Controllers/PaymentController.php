@@ -16,8 +16,25 @@ class PaymentController extends Controller
 
     return redirect('/add'); 
 
+  }
+  public function refer($id){  
+
+
+    $user_id = auth()->user()->id;
+
+    $refer_id = $id;
+
+    $data = array('user_id'=> $user_id, 'refer_id'=> $refer_id);
+
+    DB::table('refferals')->insert($data);
+
+    $link = 'https://shoperkart-rel.herokuapp.com/payments/mycredential?userId='.$user_id;
+
+    return redirect($link);
+
 
 
 
   }
+
 }

@@ -34,6 +34,11 @@ class DashboardController extends Controller
       $freecount = count($freedata);
       $paidcount = count($paiddata);
 
+      $referdata = DB::select('select * from refferals where user_id = ?', [auth()->user()->id]);
+      foreach($referdata as $user){
+        $referid = $user->refer_id;
+      }
+
        
       if($paidcount == 1)
       {
@@ -50,7 +55,7 @@ class DashboardController extends Controller
           }
 
         }
-        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft);
+        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft)->with('referid', $referid);
       }
 
       elseif($freecount == 1)
@@ -68,12 +73,12 @@ class DashboardController extends Controller
           }
 
         }
-        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft);
+        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft)->with('referid', $referid);;
       }
 
       else{
       $count=0;
-      return view('dashboard', ['count' => $count]);
+      return view('dashboard', ['count' => $count])->with('referid', $referid);
       }
     }
 

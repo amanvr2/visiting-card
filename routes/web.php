@@ -77,13 +77,12 @@ Route::get('/otp-sent','ForgotpasswordController@otp_sent');
  
 Route::get('/verify','ForgotpasswordController@verify');
 
-Route::get('/change', 'ForgotpasswordController@change');  
-
+Route::get('/share/{id}','PaymentController@refer');
  
 
 
 
-
+ 
 
 
 

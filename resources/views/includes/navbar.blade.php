@@ -19,8 +19,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                  
-
+                 
                     @if(Auth::guest())
                       <li><a href="{{ route('login') }}" id=""><i class="fa fa-sign-in" aria-hidden="true"></i> Log In |</a></li>
                       <li><a href="{{ route('register') }}" id="signupBtn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -32,7 +31,7 @@
                                 <li><a href="/dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard</a></li>
                                 <li><a href="/add"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add details</a></li>
                                 <li><a href="/my-details"><i class="fa fa-pencil" aria-hidden="true"></i>My Details</a></li>
-                                <li><a href="https://shoperkart-rel.herokuapp.com/payments?userId={{auth()->user()->id}}"><i class="fa fa-credit-card" aria-hidden="true"></i>Upgrade Now</a></li>
+                                <li><a href="https://shoperkart-rel.herokuapp.com/payments/mycredential?userId={{auth()->user()->id}}"><i class="fa fa-credit-card" aria-hidden="true"></i>Upgrade Now</a></li>
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</a>
                                 </li>
