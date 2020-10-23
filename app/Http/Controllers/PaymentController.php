@@ -7,6 +7,13 @@ use DB;
  
 class PaymentController extends Controller
 {
+
+
+  public function __construct()
+  { 
+    $this->middleware('auth');
+  }
+
   public function freeTrial(){                                        // registers user in free trial plan
 
     $id = auth()->user()->id;
@@ -17,6 +24,7 @@ class PaymentController extends Controller
     return redirect('/add'); 
 
   }
+
   public function refer($id){  
 
 
