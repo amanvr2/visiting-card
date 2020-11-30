@@ -17,15 +17,16 @@ class ViewController extends Controller
       }
 
       else{
-      
+        
 
         $stud = DB::select('select * from data where user_id = ?', [$id]);
         $serviceData = DB::select('select * from services where user_id = ?', [$id]);
         $projectData = DB::select('select * from projects where user_id = ?', [$id]);
         $vcfData = DB::select('select * from vcf where user_id = ?', [$id]); 
 
-       
         foreach ($stud as $test) {
+          $views = $test->views;
+
 
           $add = $test->address;
           $pincode = $test->pincode; 
@@ -33,6 +34,10 @@ class ViewController extends Controller
           $full = $add.$pincode;
           Mapper::location($full)->map(['zoom' => 15, 'marker' => true, 'direction'=>true,'type' => 'NORMAL']);
         }
+
+        $views=$views+1;
+
+        DB::update('update data set views = ? where user_id = ?',[$views,$id]); 
         
 
         $freeData = DB::select('select * from freetrial where user_id = ?', [$id]);
@@ -52,7 +57,7 @@ class ViewController extends Controller
           }
           if($days <= 365)
           {
-            return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('vcfData',$vcfData);
+            return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('vcfData',$vcfData)->with('views',$views);
           }
 
           else{echo"account expired";}
@@ -62,7 +67,7 @@ class ViewController extends Controller
 
         }
 
-
+ 
         elseif($freecount == 1){
 
           foreach($freeData as $vali){
@@ -76,7 +81,7 @@ class ViewController extends Controller
           }
           if($daysLeft <= 15)
             {
-              return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('vcfData',$vcfData);
+              return view('viewfile', ['stud' => $stud], ['serviceData' => $serviceData])->with('projectData', $projectData)->with('vcfData',$vcfData)->with('views',$views);
             }
 
           else{echo"account expired";}

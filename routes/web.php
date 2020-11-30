@@ -29,6 +29,12 @@ Route::get('/pricing', function () {
     return view('pricing');
 });
 
+Route::get('/test', function () {
+    return view('tes');
+});
+
+Route::post('/go', 'UserdataController@go');
+
 
 Route::get('/card/{id}', 'ViewController@dynamicview');
 

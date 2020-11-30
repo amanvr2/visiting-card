@@ -2,11 +2,11 @@
 
 @section('content')
 
-
+ 
 <div class="dark">
 
   <a onclick="dark()" role="button" class="btn btn-primary"><i class="fa fa-moon-o" aria-hidden="true"></i> Dark Mode</a>
-
+  <a role="button" class="btn btn-primary"><i class="fa fa-moon-o" aria-hidden="true"></i> Views : {{ $views }}</a>
 </div>
 
 

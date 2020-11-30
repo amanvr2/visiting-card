@@ -62,7 +62,7 @@
     width: 200px;
     height: 200px;
     position: absolute;
-    top: 280px;
+    top: 340px;
     box-shadow: 0 0 4px 1px lightgrey;
 }
 
@@ -72,10 +72,11 @@
 }
 
 .info {
-    height: 380px;
+    height: 395px;
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 45px;
 }
 
 .info-list {
@@ -1683,5 +1684,9 @@ body {
 
     .payment-list>a {
         font-size: 19px;
+    }
+
+    #log {
+        top: 310px;
     }
 }

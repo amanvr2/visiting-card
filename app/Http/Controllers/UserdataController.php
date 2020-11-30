@@ -39,5 +39,20 @@ class UserdataController extends Controller
 
     
   }
+
+  public function go(Request $req){
+
+    $file = $req->file('image');
+    $destinationPath = 'public/setimage/';
+    $originalFile = $file->getClientOriginalName();
+    $setfile = $file->resize(300, 300);
+    $setfile->move($destinationPath, $originalFile);
+
+    $data=array('image'=>$originalFile);
+
+    DB::table('image')->insert($data);
+
+
+  }
 }
  

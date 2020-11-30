@@ -34,10 +34,10 @@ class DashboardController extends Controller
       $freecount = count($freedata);
       $paidcount = count($paiddata);
 
-      $referdata = DB::select('select * from refferals where user_id = ?', [auth()->user()->id]);
-      foreach($referdata as $user){
-        $referid = $user->refer_id;
-      }
+      // $referdata = DB::select('select * from refferals where user_id = ?', [auth()->user()->id]);
+      // foreach($referdata as $user){
+      //   $referid = $user->refer_id;
+      // }
 
        
       if($paidcount == 1)
@@ -55,7 +55,7 @@ class DashboardController extends Controller
           }
 
         }
-        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft)->with('referid', $referid);
+        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft);
       }
 
       elseif($freecount == 1)
@@ -73,12 +73,12 @@ class DashboardController extends Controller
           }
 
         }
-        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft)->with('referid', $referid);;
+        return view('dashboard', ['count' => $count])->with('daysLeft', $daysLeft);
       }
 
       else{
       $count=0;
-      return view('dashboard', ['count' => $count])->with('referid', $referid);
+      return view('dashboard', ['count' => $count]);
       }
     }
 
@@ -140,7 +140,9 @@ class DashboardController extends Controller
 
         $link = "/card/" . $user_id;
 
-        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode,'website'=>$website, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'maplink'=>$maplink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'link' => $link, 'user_id' => $user_id);
+        $views = 0;
+
+        $data = array('businessname' => $businessname, 'tagline' => $tagline, 'name' => $name, 'number' => $number, 'email' => $email, 'address' => $address,'pincode' => $pincode,'website'=>$website, 'fbLink' => $fbLink, 'twitterLink' => $twitterLink, 'instaLink' => $instaLink, 'linkedinLink' => $linkedinLink,'maplink'=>$maplink,'aboutUs' => $aboutUs, 'image1' => $originalFile1,'image2' => $originalFile3, 'link' => $link,'views'=>$views, 'user_id' => $user_id);
        
 
    
