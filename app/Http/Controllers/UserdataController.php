@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Excel;
 use App\Exports\Data;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class UserdataController extends Controller
 {
@@ -45,8 +46,10 @@ class UserdataController extends Controller
     $file = $req->file('image');
     $destinationPath = 'public/setimage/';
     $originalFile = $file->getClientOriginalName();
-    $setfile = $file->resize(300, 300);
-    $setfile->move($destinationPath, $originalFile);
+    $setfile = Image::make($file->getRealPath());   
+
+    $setfile->resize(300, 300);
+    $setfile->save($destinationPath. $originalFile);
 
     $data=array('image'=>$originalFile);
 

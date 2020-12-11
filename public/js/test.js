@@ -20,6 +20,12 @@ $('body').on('click', '.remove', function () {
   }
 
 });
+
+
+
+
+
+
 $('.addRows').on('click', function () {
   addRows();
 });
