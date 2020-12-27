@@ -24,6 +24,7 @@
   <a href="/add"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Details</a>
   <a href="/my-details"><i class="fa fa-pencil" aria-hidden="true"></i>My Details</a>
   <a href="https://shoperkart-rel.herokuapp.com/payments/mycredential?userId={{auth()->user()->id}}"><i class="fa fa-credit-card" aria-hidden="true"></i>Uprade Now</a>
+  <a href="/customers/pdf"><i class="fa fa-credit-card" aria-hidden="true"></i>Download Invoice</a>
   <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
 </div>
  

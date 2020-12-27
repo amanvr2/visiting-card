@@ -87,8 +87,9 @@ Route::get('/change', 'ForgotpasswordController@change');
 
 Route::get('/share/{id}','PaymentController@refer');
 
-Route::get('/fetch','UserdataController@fetch');
+Route::get('/fetch','UserdataController@fetch'); 
  
+Route::get('/customers/pdf','UserdataController@export_pdf');
 
 
 
@@ -134,7 +135,7 @@ Route::get('/fetch','UserdataController@fetch');
 
 // Route::get('/test', function () {
 //     return view('test');
-// });
+// }); 
 
 // Route::post('/testo', 'DashboardController@test');    
 
