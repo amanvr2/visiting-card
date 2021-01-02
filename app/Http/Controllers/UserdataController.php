@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Excel;
 use PDF;
-use App\User;
+use App\User; 
 use App\Exports\Data;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -59,16 +59,6 @@ class UserdataController extends Controller
  
 
   }
-  public function export_pdf()
-  {
 
-    $id = auth()->user()->id;
-    $data = DB::select('select * from data where user_id = ?',[$id]);
-    $test = 'aman';
-    $pdf = PDF::loadView('pdf.customers', compact('data','test'));
-    return $pdf->download('customers.pdf');
-
-    // return view('pdf.customers')->with('data', $data);
-  }
 }
   

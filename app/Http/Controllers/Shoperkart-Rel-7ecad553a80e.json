@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "shoperkart-rel",
+  "private_key_id": "7ecad553a80ea48e5db495c7bd9a88d6eaf88aa1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDDanorm4eYgRzz\njU9Ni+3+SzEpn8YPqclqlvdQfDi5NSGoXhIuHRvurcDOV3g9B8wUb/pwBFGn7HjS\n2aH6O7qTtGOwgSdH/9EV4GmRXlCgBELvTF1sGNpQnXHUzgLmjpp4sEkY6/nggU9E\nW6SzsXsih98KlwwK2fDd1vPaLg2THYYgaRBLfoPi5r69cuK5GQVBJ+OswmhzD05B\n/etkkVX3DgSJ/FpLtOokcyIF88cet8Zm3xTeb4ISd8qmwevfac+9JzeQpFT2H7kz\n698ARueG1nlrhinU1FE69hvxLTX8Q/Ln4bRVzHVsggKZW/7dUCl79KKOOvnfGpK8\nP6nVeTj3AgMBAAECggEAUtsVNOMrkY6BA4VRcBxaCx2/mRn9BQwk8hRThWU+Oc0c\n2cIVLEc8Xi1+2B5/RUVGkw3Nnmw+YRhjPGd5hduIZvMv55lDWgROF1wA9tmKDubv\nqH31CI3bFx5CswuscCxbs7tvKul3F+lL/jxrL6ObhY8dk2Rq/zjcJ3tqBoLLT6oR\naf9kCPuqop0X3Sf9VEU+lsfzVNUKqImS0u/DWmSgFvxvmAPZCtQ/73zrBlOlVU/Y\nLkyvEZUYMa1c8AhSz0BOQQzfXIO4ACUHY5DDcUO58WqzZBJ1PLgIiw+vI+A9N9LM\nfqf9CbM17gukX75Ae3jWifjJGKDCFWaI+efbGzAGcQKBgQDvIeWvJHlNt2wKLY9F\neY5BLNSLt0LMOBUP25uJ/VFKrovewXC4IZiNDeGjqaIIM1oJo9s7fVsiYZaAJ7yo\nCyFxea9U+Qq+ZhqYLhwLJ/2ogSAJJWtiKJGvwZpzXKzf6E8tHPBc1jo5r+JMd9QN\nHzKJr7eqW1uZth7pZQPXhYbisQKBgQDRMyzbf85+7zKxoU6l/kvnYxqIL2zLE50h\nqkp2IXDIz+Fz+QAlmywBJaanvM/2xIOl4pfTcZi6AYFPregVvwl2nT7hw5qiNqDR\n6pUCK8oGacC7I5Jo3NKrivFxTFtwLojrm2Qiwz3K3mWx2krGJU4Y3VkQMbaNRzfh\nxi9HOgOwJwKBgEJ2kmb+ZTSjgUTG6uYtZctZkW2PruIhyEDTEcTlgj2Wi8uKyjBz\nLfouXINnd2B+HU1GnH1JVxYUN4dBBB9UkKQAZSnh2gmXSVb4odS79bVqxiOkodbz\nXaKS1cGwhV/qKm9odqnm5OH5r5T/TRGklSBNlWek4q2zP54w9ENnmljRAoGBAKxM\nouByBkgjiDQmsBklNazwwdRygv9LOzqT/9oFtted54lWBtnyUK7tLLKwXvRWbDs/\nQl7jC6//N1rB2Am5Gvk3j6fwK7b4mUHrHCj6mdzoUtWO+bImVdj1ieAPzKu7mAe9\nJx8+gPFKdKWkLbu+0/DEtesRltILWyo3yY63aHw3AoGBALdnJIzZqOyu2+fc58iW\nKIMPwTtVmEbbkOdBlbIx8v1KKwJucLf59It0EPJjqincGUY2ZzCPUf4sXLkCPy+M\nzP5SxqKhU6QIzLsXtgEyKL7ovDphOYFqsaP6LIXZTaKh64YKLpocKo++OSvSYIqc\nehWneKYoffG+3mu3ysS2UJbJ\n-----END PRIVATE KEY-----\n",
+  "client_email": "shoperkart-web@shoperkart-rel.iam.gserviceaccount.com",
+  "client_id": "106651590261090580873",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/shoperkart-web%40shoperkart-rel.iam.gserviceaccount.com"
+}

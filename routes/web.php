@@ -75,23 +75,21 @@ Route::get('/project-delete/{id}', 'DashboardController@projectDelete');
 
 Route::get('/freeTrial', 'PaymentController@freeTrial');   
 
+
 Route::get('/forgot-password', function () {
   return view('forgotPassword.number');
 });
-
 Route::get('/otp-sent','ForgotpasswordController@otp_sent');
- 
 Route::get('/verify','ForgotpasswordController@verify');
-
 Route::get('/change', 'ForgotpasswordController@change'); 
 
 Route::get('/share/{id}','PaymentController@refer');
+Route::get('/payments-history', 'PaymentController@paymentshistory');
+Route::get('/download-invoice/{invoiceId}', 'PaymentController@export_pdf');
+
+
 
 Route::get('/fetch','UserdataController@fetch'); 
- 
-Route::get('/customers/pdf','UserdataController@export_pdf');
-
-
 
  
 
