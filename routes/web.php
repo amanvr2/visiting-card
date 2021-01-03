@@ -87,6 +87,10 @@ Route::get('/share/{id}','PaymentController@refer');
 Route::get('/payments-history', 'PaymentController@paymentshistory');
 Route::get('/download-invoice/{invoiceId}', 'PaymentController@export_pdf');
 
+Route::get('/testfire', 'PaymentController@hell');
+
+
+
 
 
 Route::get('/fetch','UserdataController@fetch'); 

@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Excel;
 use PDF;
 use App\User; 
-use App\Exports\Data;
-use Intervention\Image\ImageManagerStatic as Image;
+use Google\Cloud\Firestore\FirestoreClient;
+use Google\Cloud\Storage\StorageClient;
  
 class PaymentController extends Controller
 {
@@ -18,6 +17,22 @@ class PaymentController extends Controller
   { 
     $this->middleware('auth');
   }
+
+
+    public function hell()
+    {
+
+        $config = [
+            'projectId' => 'shoperkart-rel',
+            'keyFilePath' => 'C:\wamp64\www\V-card\app\Http\Controllers\Shoperkart-Rel-7ecad553a80e.json',
+        ];
+
+        $storage = new StorageClient($config);
+
+        foreach ($storage->buckets() as $bucket) {
+            printf('Bucket: %s' . PHP_EOL, $bucket->name());
+        }
+    }
 
   public function freeTrial(){                                        // registers user in free trial plan
 
@@ -79,11 +94,54 @@ class PaymentController extends Controller
         $roundOff = $total-$grandTotal;
       }
 
-    }
-    $pdf = PDF::loadView('pdf.customers', compact('data','test','igst','total','grandTotal','roundOff'));
-    return $pdf->download('customers.pdf');
+      $orderid = $user->orderId;
 
-    // return view('pdf.customers')->with('data', $data);
+    }
+    // echo $orderid;
+
+    $config = [
+      'projectId' => 'shoperkart-rel',
+      'keyFilePath' => 'C:\wamp64\www\V-card\app\Http\Controllers\Shoperkart-Rel-7ecad553a80e.json',
+    ];
+
+    $db = new FirestoreClient($config);
+
+    $citiesRef = $db->collection('Mycredential');
+
+    $query = $citiesRef->where('orderId', '=', $orderid);
+
+    $snapshot = $query->documents();
+
+    $count=0;
+
+    foreach($snapshot as $user){
+      $count++;
+
+    }
+
+    if($count == 1){
+
+      foreach($snapshot as $user){
+        $invoice_no = $user['invoice_no'];
+
+      }
+      $pdf = PDF::loadView('pdf.customers', compact('data','test','igst','total','grandTotal','roundOff','invoice_no'));
+      return $pdf->download('customers.pdf');
+
+    }
+
+    else{
+      echo "Unable to get Invoice Number";
+    }
+
+
+
+
+    
+
+    
   }
+
+ 
 
 }

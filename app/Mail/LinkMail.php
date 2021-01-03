@@ -30,7 +30,7 @@ class LinkMail extends Mailable
      */
     public function build()
     {
-        return $this->from('info@mudrahome.com')->subject('Welcome Mail')->view('Link_email')->with('data', $this->data);
+      return $this->from('info@mudrahome.com')->subject('Welcome Mail')->view('Link_email')->with('data', $this->data);
 
     }
 }

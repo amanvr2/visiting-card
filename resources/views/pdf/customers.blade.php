@@ -59,7 +59,7 @@ tr {
 
       @foreach($test as $user)
       <tr>
-        <td> {{ $user->orderId }} </td>
+        <td> {{ $invoice_no }} </td>
         <td>{{ $user->dateTime }}</td>
         
       </tr>
