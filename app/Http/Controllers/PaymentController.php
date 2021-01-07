@@ -83,8 +83,20 @@ class PaymentController extends Controller
     $id = auth()->user()->id;
     $data = DB::select('select * from data where user_id = ?',[$id]);
     $test = DB::select('select * from payments where id = ?',[$invoiceId]);
+
+    foreach($data as $user){
+      $pincode = $user->pincode;
+    }
+    $cityData = file_get_contents('http://postalpincode.in/api/pincode/'.$pincode);
+    $cityData = json_decode($cityData);
+    $city = $cityData->PostOffice['0']->Taluk;
+    
+ 
+
     foreach($test as $user){
       $igst =  (0.18 * $user->planAmount);
+      $cgst = $igst/2;
+      $sgst = $cgst;
       $total = $igst + $user->planAmount;
       $grandTotal = round($total);
       if($total<$grandTotal){
@@ -97,7 +109,7 @@ class PaymentController extends Controller
       $orderid = $user->orderId;
 
     }
-    // echo $orderid;
+   
 
     $config = [
       'projectId' => 'shoperkart-rel',
@@ -105,13 +117,10 @@ class PaymentController extends Controller
     ];
 
     $db = new FirestoreClient($config);
-
     $citiesRef = $db->collection('Mycredential');
-
     $query = $citiesRef->where('orderId', '=', $orderid);
-
     $snapshot = $query->documents();
-
+ 
     $count=0;
 
     foreach($snapshot as $user){
@@ -124,9 +133,25 @@ class PaymentController extends Controller
       foreach($snapshot as $user){
         $invoice_no = $user['invoice_no'];
 
+      } 
+
+      if($city == 'Delhi'){
+        $igst = NULL;
+        $pdf = PDF::loadView('pdf.customers', compact('data','test','igst','cgst','total','grandTotal','roundOff','invoice_no'));
+        return $pdf->download('customers.pdf');
       }
-      $pdf = PDF::loadView('pdf.customers', compact('data','test','igst','total','grandTotal','roundOff','invoice_no'));
-      return $pdf->download('customers.pdf');
+
+      else{
+
+        $cgst = NULL;
+
+        $pdf = PDF::loadView('pdf.customers', compact('data','test','igst','cgst','total','grandTotal','roundOff','invoice_no'));
+        return $pdf->download('customers.pdf');
+
+      }
+
+
+
 
     }
 

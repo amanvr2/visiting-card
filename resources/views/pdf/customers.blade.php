@@ -52,7 +52,7 @@ tr {
       <tr>
         <th>Invoice No </th>
         <th>Date</th>
-       
+        
       </tr>
     </thead>
     <tbody>
@@ -123,12 +123,30 @@ tr {
       <td>{{$customer->planAmount}}</td>
     </tr>
 
+  @if($igst != NULL)
+ 
     <tr>
       <td></td>
       <td></td>
       <td> IGST 18% </td>
       <td>{{$igst}} </td>
     </tr>
+  @else
+    <tr>
+      <td></td>
+      <td></td>
+      <td> CGST 9% </td>
+      <td>{{$cgst}} </td>
+    </tr>
+
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td> SGST 9% </td>
+      <td>{{$cgst}} </td>
+    </tr>
+  @endif
 
     <tr>
       <td></td>
